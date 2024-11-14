@@ -1,15 +1,42 @@
 part of 'home_bloc.dart';
 
-@immutable
-sealed class HomeState {}
+sealed class HomeState extends Equatable {
+  const HomeState();
+}
 
-final class HomeInitial extends HomeState {}
+final class HomeInitial extends HomeState {
+  @override
+  List<Object> get props => [];
+}
 
-class NavigationState extends Equatable {
-  const NavigationState({this.selectedIndex = 0});
+class HomeLoadingState extends HomeState {
+  @override
+  List<Object?> get props => [];
+}
 
-  final int selectedIndex;
+class HomeDataLoadedState extends HomeState {
+  const HomeDataLoadedState({
+    required this.pokemonsResponse,
+  });
+
+  final PokemonResponse pokemonsResponse;
 
   @override
-  List<Object?> get props => [selectedIndex];
+  List<Object> get props => [pokemonsResponse];
+}
+
+class HomeEmptyDataState extends HomeState {
+  const HomeEmptyDataState();
+
+  @override
+  List<Object> get props => [];
+}
+
+class ErrorState extends HomeState {
+  const ErrorState({required this.error});
+
+  final String error;
+
+  @override
+  List<Object> get props => [error];
 }
