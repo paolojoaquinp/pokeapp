@@ -14,7 +14,7 @@ class PokemonCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<PokemonCardBloc>(
-      create: (context) => PokemonCardBloc('ID: $urlDetail'),
+      create: (context) => PokemonCardBloc(urlDetail),
       child: _Body(pokemonName: pokemonName, urlDetail: urlDetail),
     );
   }

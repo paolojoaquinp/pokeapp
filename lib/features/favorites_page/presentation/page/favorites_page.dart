@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/features/favorites_page/presentation/bloc/favorites_bloc.dart';
+import 'package:pokeapp/features/favorites_page/presentation/page/widgets/clear_all_button.dart';
 import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
 import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/page/widgets/pokemon_card/pokemon_card.dart';
@@ -38,38 +39,45 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        BlocBuilder<FavoritesBloc, FavoritesState>(
-          builder: (context, state) {
-            if (state is FavoritesLoadingState) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            if (state is FavoritesLoadedState) {
-              return Expanded(
+    return BlocBuilder<FavoritesBloc, FavoritesState>(
+      builder: (context, state) {
+        if (state is FavoritesLoadingState) {
+          return const Center(
+          child: CircularProgressIndicator(),
+          );
+        }
+        if (state is FavoritesLoadedState) {
+          return Column(
+            children: [
+               ClearFavoritesButton(
+                onPressed: () {
+                  context.read<FavoritesBloc>().clearAllFavorites();
+                  Navigator.of(context).pop();
+                },
+              ),
+              Expanded(
                 child: ListView.builder(
                     itemCount: state.pokemons.length,
                     itemBuilder: (_, index) {
                       final pokemon = state.pokemons[index];
                       return PokemonCard(
                         pokemonName: pokemon.name!,
-                        urlDetail: 'https://pokeapi.co/api/v2/pokemon/${pokemon.name!}',
+                        urlDetail:
+                            'https://pokeapi.co/api/v2/pokemon/${pokemon.name!}',
                       );
                     }),
-              );
-            }
-            if (state is FavoritesErrorState) {
-              return Center(
-                child: Text(state.error),
-              );
-            } else {
-              return const SizedBox.shrink();
-            }
-          },
-        )
-      ],
+              ),
+            ],
+          );
+        }
+        if (state is FavoritesErrorState) {
+          return Center(
+            child: Text(state.error),
+          );
+        } else {
+          return const SizedBox.shrink();
+        }
+      },
     );
   }
 }

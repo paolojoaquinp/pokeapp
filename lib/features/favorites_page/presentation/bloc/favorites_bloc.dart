@@ -26,7 +26,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     final List<String> myFavorites = hivePreferences.getAllFavoriteIds();
 
     for(final favoriteId in myFavorites) {
-      final result = await pokemonRepository.getPokemonsByName(favoriteId);
+      final result = await pokemonRepository.getPokemonDetails(favoriteId);
       result.when(ok: (data) {
         myFavoritesPokemons.add(data);
       }, err: (error) {
@@ -34,5 +34,12 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
       });
     }
     emit(FavoritesLoadedState(pokemons: myFavoritesPokemons));
+  }
+
+  Future<void> clearAllFavorites() async {
+    try {
+      await hivePreferences.clearAllFavorites();
+    } catch (e) {
+    }
   }
 }

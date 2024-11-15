@@ -33,11 +33,20 @@ class HiveHelper {
   }
 
   List<String> getAllFavoriteIds() {
-    return box.get('favoriteIds', defaultValue: <String>[])!.cast<String>();
+    final rta = box.get('favoriteIds', defaultValue: <String>[])!.cast<String>();
+    return rta;
   }
 
   Future<bool> isFavorite(String id) async {
     List<String> favorites = getAllFavoriteIds();
     return favorites.contains(id);
+  }
+
+  Future<void> clearAllFavorites() async {
+    try {
+      await box.put('favoriteIds', <String>[]);
+    } catch (e) {
+      throw Exception('Error clearing favorites: $e');
+    }
   }
 }

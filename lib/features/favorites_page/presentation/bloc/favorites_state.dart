@@ -38,3 +38,7 @@ class FavoritesErrorState extends FavoritesState {
   @override
   List<Object> get props => [error];
 }
+
+class PokemonFavoritesInitial extends FavoritesState {}
+class PokemonFavoritesClearingState extends FavoritesState {}
+class PokemonFavoritesClearedState extends FavoritesState {}
