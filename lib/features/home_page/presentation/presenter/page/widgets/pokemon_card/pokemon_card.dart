@@ -1,9 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/features/home_page/presentation/children/pokemon_detail/presentation/pokemon_detail_page.dart';
+import 'package:pokeapp/features/home_page/presentation/presenter/bloc/home_bloc.dart';
+import 'package:pokeapp/features/home_page/presentation/presenter/page/widgets/pokemon_card/bloc/pokemon_card_bloc.dart';
+import 'package:pokeapp/features/home_page/presentation/presenter/page/widgets/pokemon_card/bloc/pokemon_card_state.dart';
 
 class PokemonCard extends StatelessWidget {
   const PokemonCard(
       {super.key, required this.pokemonName, required this.urlDetail});
+
+  final String pokemonName;
+  final String urlDetail;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<PokemonCardBloc>(
+      create: (context) => PokemonCardBloc('ID: $urlDetail'),
+      child: _Body(pokemonName: pokemonName, urlDetail: urlDetail),
+    );
+  }
+}
+
+class _Body extends StatelessWidget {
+  const _Body({
+    super.key,
+    required this.pokemonName,
+    required this.urlDetail,
+  });
 
   final String pokemonName;
   final String urlDetail;
@@ -63,11 +86,32 @@ class PokemonCard extends StatelessWidget {
                         fontSize: 18.0,
                       ),
                     ),
-                    SizedBox(height: 8.0),
-                    SizedBox(height: 16.0),
-                    Text(
-                      'Saber mas',
-                      style: TextStyle(color: Colors.blueAccent),
+                    const SizedBox(height: 16.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Saber mas',
+                          style: TextStyle(color: Colors.blueAccent),
+                        ),
+                        BlocBuilder<PokemonCardBloc, PokemonCardState>(
+                          builder: (context, state) {
+                            return IconButton(
+                              icon: Icon(
+                                state.isFavorite
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: state.isFavorite ? Colors.red : null,
+                              ),
+                              onPressed: () {
+                                context
+                                    .read<PokemonCardBloc>()
+                                    .toggleFavorite();
+                              },
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 ),
