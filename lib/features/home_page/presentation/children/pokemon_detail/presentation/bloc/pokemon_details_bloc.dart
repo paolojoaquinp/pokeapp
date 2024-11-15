@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:pokeapp/features/home_page/domain/entities/pokemon/pokemon.dart';
 import 'package:pokeapp/features/home_page/domain/repositories/pokemon_repository.dart';
 

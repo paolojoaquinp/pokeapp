@@ -63,7 +63,7 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SingleChildScrollView(
       child: Column(
         children: [
           Hero(
@@ -87,15 +87,48 @@ class _Body extends StatelessWidget {
           BlocBuilder<PokemonDetailsBloc, PokemonDetailsState>(
             builder: (context, state) {
               if (state is DetailsLoadedState) {
-                return Expanded(
+                return Padding(
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text(state.pokemon.abilities!.first.ability!.name ?? 'Sin Habilidad'),
+                      Text("Habilidades:",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      ...state.pokemon.abilities!.map((ability) => Text(
+                          '${ability.ability!.name} ${ability.isHidden == true ? "(Oculta)" : ""}')),
+                      const SizedBox(height: 8),
+                      Text("Estadísticas Base:",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      ...state.pokemon.stats!.map((stat) =>
+                          Text('${stat.stat!.name}: ${stat.baseStat}')),
+                      const SizedBox(height: 8),
+                      Text("Movimientos:",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      ...state.pokemon.moves!.take(5).map((move) => Text(
+                          '${move.move!.name} - Nivel ${move.versionGroupDetails?.first.levelLearnedAt.toString()}')),
+                      const SizedBox(height: 8),
+                      Text("Altura y Peso:",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text('Altura: ${state.pokemon.height} dm'),
+                      Text('Peso: ${state.pokemon.weight} hg'),
+                      const SizedBox(height: 8),
+                      Text("Tipos:",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      ...state.pokemon.types!
+                          .map((type) => Text(type.type!.name!)),
+                      const SizedBox(height: 8),
+                      Text(
+                          "Experiencia Base: ${state.pokemon.baseExperience}"),
+                      const SizedBox(height: 8),
+                      if (state.pokemon.sprites!.frontDefault != null)
+                        Image.network(state.pokemon.sprites!.frontDefault!),
                     ],
                   ),
                 );
               } else {
-                return const Center(child: CircularProgressIndicator(),);
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
               }
             },
           )

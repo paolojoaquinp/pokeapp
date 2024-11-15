@@ -45,8 +45,7 @@ class PokemonCard extends StatelessWidget {
               Hero(
                 tag: urlDetail,
                 child: Image.network(
-                  'https://img.pokemondb.net/artwork/$pokemonName.jpg' ??
-                      'https://picsum.photos/250?image=9',
+                  'https://img.pokemondb.net/artwork/$pokemonName.jpg',
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: 200,
