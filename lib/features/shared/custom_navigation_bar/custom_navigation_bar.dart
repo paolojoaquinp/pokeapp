@@ -11,8 +11,8 @@ class BottomNavigationComponent extends StatelessWidget {
 
   static final List<Widget> _pages = [
     const HomePage(),
-    const FavoritesPage(),
     const SearchPage(),
+    const FavoritesPage(),
   ];
 
   @override
@@ -37,7 +37,7 @@ class BottomNavigationComponent extends StatelessWidget {
                   label: 'Home',
                 ),
                 NavigationDestination(
-                  icon: Icon(Icons.person_outline),
+                  icon: Icon(Icons.search_outlined),
                   selectedIcon: Icon(Icons.search),
                   label: 'Buscar',
                 ),
