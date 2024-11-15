@@ -92,27 +92,27 @@ class _Body extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text("Habilidades:",
+                      const Text("Habilidades:",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       ...state.pokemon.abilities!.map((ability) => Text(
                           '${ability.ability!.name} ${ability.isHidden == true ? "(Oculta)" : ""}')),
                       const SizedBox(height: 8),
-                      Text("Estadísticas Base:",
+                      const Text("Estadísticas Base:",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       ...state.pokemon.stats!.map((stat) =>
                           Text('${stat.stat!.name}: ${stat.baseStat}')),
                       const SizedBox(height: 8),
-                      Text("Movimientos:",
+                      const Text("Movimientos:",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       ...state.pokemon.moves!.take(5).map((move) => Text(
                           '${move.move!.name} - Nivel ${move.versionGroupDetails?.first.levelLearnedAt.toString()}')),
                       const SizedBox(height: 8),
-                      Text("Altura y Peso:",
+                      const Text("Altura y Peso:",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Text('Altura: ${state.pokemon.height} dm'),
                       Text('Peso: ${state.pokemon.weight} hg'),
                       const SizedBox(height: 8),
-                      Text("Tipos:",
+                      const Text("Tipos:",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       ...state.pokemon.types!
                           .map((type) => Text(type.type!.name!)),
