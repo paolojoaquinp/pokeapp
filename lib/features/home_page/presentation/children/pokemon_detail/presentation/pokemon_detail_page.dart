@@ -6,10 +6,10 @@ import 'package:pokeapp/features/home_page/presentation/children/pokemon_detail/
 
 class PokemonDetailPage extends StatelessWidget {
   const PokemonDetailPage({
-    Key? key,
+    super.key,
     required this.pokemonName,
     required this.urlDetail,
-  }) : super(key: key);
+  });
 
   final String pokemonName;
   final String urlDetail;
@@ -32,7 +32,6 @@ class PokemonDetailPage extends StatelessWidget {
 
 class _Page extends StatelessWidget {
   const _Page({
-    super.key,
     required this.pokemonName,
     required this.urlDetail,
   });
@@ -53,7 +52,6 @@ class _Page extends StatelessWidget {
 
 class _Body extends StatelessWidget {
   const _Body({
-    super.key,
     required this.urlDetail,
     required this.pokemonName,
   });

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pokeapp/core/helpers/hive_helper.dart';
-import 'package:pokeapp/features/favorites_page/presentation/page/favorites_page.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/page/home_page.dart';
 
 Future<void> main() async {
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomePage()
+      home: const HomePage()
     );
   }
 }

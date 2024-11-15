@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:pokeapp/core/helpers/hive_helper.dart';
 import 'package:pokeapp/features/home_page/domain/entities/pokemon_response/pokemon_response.dart';
 import 'package:pokeapp/features/home_page/domain/repositories/pokemon_repository.dart';
 

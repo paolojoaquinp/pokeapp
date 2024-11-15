@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
 import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/bloc/home_bloc.dart';
-import 'package:pokeapp/features/home_page/presentation/presenter/page/widgets/pokemon_card/bloc/pokemon_card_bloc.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/page/widgets/pokemon_card/pokemon_card.dart';
 import 'package:pokeapp/features/search_page/presentation/bloc/search_bloc.dart';
 
@@ -39,15 +38,13 @@ class _Page extends StatelessWidget {
           );
         }
       },
-      child: _Body(),
+      child: const _Body(),
     );
   }
 }
 
 class _Body extends StatelessWidget {
-  _Body({
-    Key? key,
-  }) : super(key: key);
+  const _Body();
 
   @override
   Widget build(BuildContext context) {

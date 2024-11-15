@@ -20,9 +20,7 @@ class HomePage extends StatelessWidget {
 }
 
 class _Page extends StatelessWidget {
-  const _Page({
-    super.key,
-  });
+  const _Page();
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +36,15 @@ class _Page extends StatelessWidget {
         }
       },
       child: Scaffold(
-        appBar: AppBar(title: Text('Pokeapp'),),
-        body: _Body(),
+        appBar: AppBar(title: const Text('Pokeapp'),),
+        body: const _Body(),
       )
     );
   }
 }
 
 class _Body extends StatelessWidget {
-  const _Body({
-    super.key,
-  });
+  const _Body();
 
   @override
   Widget build(BuildContext context) {
