@@ -30,9 +30,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           emit(HomeDataLoadedState(pokemonsResponse: data));
         }
       },
-      err: (err) => {
-        emit(ErrorState(error: err.toString()))
-      },
+      err: (err) => {emit(ErrorState(error: err.toString()))},
     );
   }
 }

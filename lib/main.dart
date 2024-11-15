@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pokeapp/features/home_page/presentation/presenter/page/home_page.dart';
-import 'package:pokeapp/features/search_page/presentation/page/search_page.dart';
+import 'package:pokeapp/core/helpers/hive_helper.dart';
+import 'package:pokeapp/features/shared/custom_navigation_bar/custom_navigation_bar.dart';
 
-void main() => runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await HiveHelper().init();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -15,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomePage()
+      home: const BottomNavigationComponent()
     );
   }
 }
