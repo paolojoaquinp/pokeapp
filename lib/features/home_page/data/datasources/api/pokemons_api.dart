@@ -52,4 +52,27 @@ class PokemonsApi {
     }
   }
 
+  Future<Result<Pokemon, String>> getPokemonByName(String pokemonRequestName) async {
+    try {
+      final response = await _dio.get(
+        'https://pokeapi.co/api/v2/pokemon/$pokemonRequestName',
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        final json = response.data;
+        final pokemonResponse = Pokemon.fromJson(json);
+        return Ok(pokemonResponse);
+      }
+      return Err('Failed to fetch Pokémon: ${response.statusCode}');
+    } catch (e) {
+      return const Err('Pokemon not founded');
+    }
+  }
+
 }

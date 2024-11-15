@@ -18,4 +18,9 @@ class PokemonRepositoryImpl implements PokemonRepository {
   Future<Result<Pokemon, String>> getPokemonDetails(String url) async {
     return _api.getPokemonDetails(url);
   }
+  
+  @override
+  Future<Result<Pokemon, String>> getPokemonsByName(String pokemonRequestName) {
+    return _api.getPokemonByName(pokemonRequestName);
+  }
 }

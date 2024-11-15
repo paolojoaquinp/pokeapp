@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/page/home_page.dart';
+import 'package:pokeapp/features/search_page/presentation/page/search_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomePage()
+      home: SearchPage()
     );
   }
 }

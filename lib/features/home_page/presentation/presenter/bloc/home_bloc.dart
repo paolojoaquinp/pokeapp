@@ -9,13 +9,14 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final PokemonRepository repository;
   HomeBloc({required this.repository}) : super(HomeInitial()) {
     on<HomeEvent>((event, emit) {
       // TODO: implement event handler
     });
     on<InitialEvent>(_onInitialEvent);
   }
+
+  final PokemonRepository repository;
 
   Future<void> _onInitialEvent(
     InitialEvent event,
