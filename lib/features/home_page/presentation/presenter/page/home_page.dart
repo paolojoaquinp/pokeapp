@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
 import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
-import 'package:pokeapp/features/home_page/domain/entities/pokemon/pokemon.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/bloc/home_bloc.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/page/widgets/pokemon_card.dart';
 
@@ -15,7 +14,7 @@ class HomePage extends StatelessWidget {
       create: (context) =>
           HomeBloc(repository: PokemonRepositoryImpl(PokemonsApi()))
             ..add(const InitialEvent()),
-      child: _Page(),
+      child: const _Page(),
     );
   }
 }

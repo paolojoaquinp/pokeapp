@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
 import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
-import 'package:pokeapp/features/home_page/domain/repositories/pokemon_repository.dart';
 import 'package:pokeapp/features/home_page/presentation/children/pokemon_detail/presentation/bloc/pokemon_details_bloc.dart';
 
 class PokemonDetailPage extends StatelessWidget {
@@ -45,7 +44,7 @@ class _Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(pokemonName ?? 'Pokemon Detail'),
+        title: Text(pokemonName),
       ),
       body: _Body(urlDetail: urlDetail, pokemonName: pokemonName),
     );
@@ -70,15 +69,14 @@ class _Body extends StatelessWidget {
           Hero(
             tag: urlDetail,
             child: Image.network(
-              'https://img.pokemondb.net/artwork/$pokemonName.jpg' ??
-                  'https://picsum.photos/250?image=9',
+              'https://img.pokemondb.net/artwork/$pokemonName.jpg',
               fit: BoxFit.cover,
               width: double.infinity,
             ),
           ),
           const SizedBox(height: 16),
           Text(
-            pokemonName ?? 'Unknown',
+            pokemonName,
             style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const Divider(),

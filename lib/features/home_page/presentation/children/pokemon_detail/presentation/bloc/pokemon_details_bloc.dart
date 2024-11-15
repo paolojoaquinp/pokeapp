@@ -12,7 +12,7 @@ part 'pokemon_details_state.dart';
 class PokemonDetailsBloc extends Bloc<PokemonDetailsEvent, PokemonDetailsState> {
   PokemonDetailsBloc({
     required this.repository,
-  }) : super(PokemonDetailsInitialState()) {
+  }) : super(const PokemonDetailsInitialState()) {
     on<PokemonDetailsEvent>((event, emit) {});
     on<PokemonDetailsInitialEvent>(_onPokemonDetailsInitialEvent);
   }
