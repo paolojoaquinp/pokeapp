@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pokeapp/features/home_page/domain/entities/pokemon/pokemon.dart';
 import 'package:pokeapp/features/home_page/presentation/children/pokemon_detail/presentation/pokemon_detail_page.dart';
 
 class PokemonCard extends StatelessWidget {
-  const PokemonCard({super.key, required this.pokemonName, required this.urlDetail});
+  const PokemonCard(
+      {super.key, required this.pokemonName, required this.urlDetail});
 
   final String pokemonName;
   final String urlDetail;
@@ -15,12 +15,28 @@ class PokemonCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => PokemonDetailPage(pokemonName: pokemonName, urlDetail: urlDetail),
+            builder: (context) => PokemonDetailPage(
+              pokemonName: pokemonName,
+              urlDetail: urlDetail,
+            ),
           ),
         );
       },
-      child: Padding(
-        padding: EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2), // Color de la sombra
+              spreadRadius: 2, // Expansión de la sombra
+              blurRadius: 8, // Difuminado de la sombra
+              offset: Offset(0, 4), // Desplazamiento en x y en y
+            ),
+          ],
+        ),
+        padding: const EdgeInsets.all(8.0),
+        margin: const EdgeInsets.all(12.0),
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(9.0)),
           child: Column(
@@ -29,7 +45,8 @@ class PokemonCard extends StatelessWidget {
               Hero(
                 tag: urlDetail,
                 child: Image.network(
-                  'https://img.pokemondb.net/artwork/$pokemonName.jpg' ?? 'https://picsum.photos/250?image=9',
+                  'https://img.pokemondb.net/artwork/$pokemonName.jpg' ??
+                      'https://picsum.photos/250?image=9',
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: 200,
@@ -48,16 +65,10 @@ class PokemonCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 8.0),
-                    Text(
-                      'Some quick example text to build on  the card',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                      ),
-                    ),
                     SizedBox(height: 16.0),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text('Read more'),
+                    Text(
+                      'Saber mas',
+                      style: TextStyle(color: Colors.blueAccent),
                     ),
                   ],
                 ),

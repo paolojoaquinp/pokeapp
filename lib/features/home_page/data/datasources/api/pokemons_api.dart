@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:oxidized/oxidized.dart';
+import 'package:pokeapp/features/home_page/domain/entities/pokemon/pokemon.dart';
 import 'package:pokeapp/features/home_page/domain/entities/pokemon_response/pokemon_response.dart';
 
 class PokemonsApi {
@@ -27,4 +28,28 @@ class PokemonsApi {
       return Err('An unexpected error occurred: $e');
     }
   }
+
+  Future<Result<Pokemon, String>> getPokemonDetails(String url) async {
+    try {
+      final response = await _dio.get(
+        url,
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        final json = response.data;
+        final pokemonResponse = Pokemon.fromJson(json);
+        return Ok(pokemonResponse);
+      }
+      return Err('Failed to fetch Pokémon: ${response.statusCode}');
+    } catch (e) {
+      return Err('An unexpected error occurred: $e');
+    }
+  }
+
 }
