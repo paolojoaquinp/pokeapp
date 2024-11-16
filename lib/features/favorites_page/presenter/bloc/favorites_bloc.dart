@@ -114,7 +114,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
       await hivePreferences.clearAllFavorites();
       add(FavoritesInitialEvent());
     } catch (e) {
-      emit(FavoritesErrorState(error: e.toString()));
+      throw(Exception(e));
     }
   }
 }
