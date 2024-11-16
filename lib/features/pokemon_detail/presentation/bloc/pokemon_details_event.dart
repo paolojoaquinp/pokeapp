@@ -16,13 +16,13 @@ class InitialEvent extends PokemonDetailsEvent {
 
 class PokemonDetailsInitialEvent extends PokemonDetailsEvent {
   const PokemonDetailsInitialEvent({
-    required this.urlDetailPokemon,
+    required this.pokemonName,
   });
 
-  final String urlDetailPokemon;
+  final String pokemonName;
 
   @override
-  List<Object> get props => [urlDetailPokemon];  
+  List<Object> get props => [pokemonName];  
 }
 
 

@@ -337,7 +337,7 @@ class GenerationViii with _$GenerationViii {
 @freezed
 class Stat with _$Stat {
   factory Stat({
-    int? baseStat,
+    int? base_stat,
     int? effort,
     Species? stat,
   }) = _Stat;

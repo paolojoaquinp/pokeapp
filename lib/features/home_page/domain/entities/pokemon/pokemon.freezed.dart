@@ -6178,7 +6178,7 @@ Stat _$StatFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Stat {
-  int? get baseStat => throw _privateConstructorUsedError;
+  int? get base_stat => throw _privateConstructorUsedError;
   int? get effort => throw _privateConstructorUsedError;
   Species? get stat => throw _privateConstructorUsedError;
 
@@ -6196,7 +6196,7 @@ abstract class $StatCopyWith<$Res> {
   factory $StatCopyWith(Stat value, $Res Function(Stat) then) =
       _$StatCopyWithImpl<$Res, Stat>;
   @useResult
-  $Res call({int? baseStat, int? effort, Species? stat});
+  $Res call({int? base_stat, int? effort, Species? stat});
 
   $SpeciesCopyWith<$Res>? get stat;
 }
@@ -6216,14 +6216,14 @@ class _$StatCopyWithImpl<$Res, $Val extends Stat>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? baseStat = freezed,
+    Object? base_stat = freezed,
     Object? effort = freezed,
     Object? stat = freezed,
   }) {
     return _then(_value.copyWith(
-      baseStat: freezed == baseStat
-          ? _value.baseStat
-          : baseStat // ignore: cast_nullable_to_non_nullable
+      base_stat: freezed == base_stat
+          ? _value.base_stat
+          : base_stat // ignore: cast_nullable_to_non_nullable
               as int?,
       effort: freezed == effort
           ? _value.effort
@@ -6258,7 +6258,7 @@ abstract class _$$StatImplCopyWith<$Res> implements $StatCopyWith<$Res> {
       __$$StatImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? baseStat, int? effort, Species? stat});
+  $Res call({int? base_stat, int? effort, Species? stat});
 
   @override
   $SpeciesCopyWith<$Res>? get stat;
@@ -6276,14 +6276,14 @@ class __$$StatImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? baseStat = freezed,
+    Object? base_stat = freezed,
     Object? effort = freezed,
     Object? stat = freezed,
   }) {
     return _then(_$StatImpl(
-      baseStat: freezed == baseStat
-          ? _value.baseStat
-          : baseStat // ignore: cast_nullable_to_non_nullable
+      base_stat: freezed == base_stat
+          ? _value.base_stat
+          : base_stat // ignore: cast_nullable_to_non_nullable
               as int?,
       effort: freezed == effort
           ? _value.effort
@@ -6300,13 +6300,13 @@ class __$$StatImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$StatImpl implements _Stat {
-  _$StatImpl({this.baseStat, this.effort, this.stat});
+  _$StatImpl({this.base_stat, this.effort, this.stat});
 
   factory _$StatImpl.fromJson(Map<String, dynamic> json) =>
       _$$StatImplFromJson(json);
 
   @override
-  final int? baseStat;
+  final int? base_stat;
   @override
   final int? effort;
   @override
@@ -6314,7 +6314,7 @@ class _$StatImpl implements _Stat {
 
   @override
   String toString() {
-    return 'Stat(baseStat: $baseStat, effort: $effort, stat: $stat)';
+    return 'Stat(base_stat: $base_stat, effort: $effort, stat: $stat)';
   }
 
   @override
@@ -6322,15 +6322,15 @@ class _$StatImpl implements _Stat {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StatImpl &&
-            (identical(other.baseStat, baseStat) ||
-                other.baseStat == baseStat) &&
+            (identical(other.base_stat, base_stat) ||
+                other.base_stat == base_stat) &&
             (identical(other.effort, effort) || other.effort == effort) &&
             (identical(other.stat, stat) || other.stat == stat));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, baseStat, effort, stat);
+  int get hashCode => Object.hash(runtimeType, base_stat, effort, stat);
 
   /// Create a copy of Stat
   /// with the given fields replaced by the non-null parameter values.
@@ -6349,13 +6349,15 @@ class _$StatImpl implements _Stat {
 }
 
 abstract class _Stat implements Stat {
-  factory _Stat({final int? baseStat, final int? effort, final Species? stat}) =
-      _$StatImpl;
+  factory _Stat(
+      {final int? base_stat,
+      final int? effort,
+      final Species? stat}) = _$StatImpl;
 
   factory _Stat.fromJson(Map<String, dynamic> json) = _$StatImpl.fromJson;
 
   @override
-  int? get baseStat;
+  int? get base_stat;
   @override
   int? get effort;
   @override

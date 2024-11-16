@@ -516,7 +516,7 @@ Map<String, dynamic> _$$GenerationViiiImplToJson(
     };
 
 _$StatImpl _$$StatImplFromJson(Map<String, dynamic> json) => _$StatImpl(
-      baseStat: (json['baseStat'] as num?)?.toInt(),
+      base_stat: (json['base_stat'] as num?)?.toInt(),
       effort: (json['effort'] as num?)?.toInt(),
       stat: json['stat'] == null
           ? null
@@ -525,7 +525,7 @@ _$StatImpl _$$StatImplFromJson(Map<String, dynamic> json) => _$StatImpl(
 
 Map<String, dynamic> _$$StatImplToJson(_$StatImpl instance) =>
     <String, dynamic>{
-      'baseStat': instance.baseStat,
+      'base_stat': instance.base_stat,
       'effort': instance.effort,
       'stat': instance.stat,
     };

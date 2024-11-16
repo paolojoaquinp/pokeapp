@@ -19,13 +19,11 @@ class PokemonDetailsBloc extends Bloc<PokemonDetailsEvent, PokemonDetailsState> 
   final PokemonRepository repository;
 
   Future<void> _onPokemonDetailsInitialEvent(event, Emitter<PokemonDetailsState> emit) async {
-    final result = await repository.getPokemonDetails(event.urlDetailPokemon);
+    final result = await repository.getPokemonsByName(event.pokemonName);
     emit(const DetailsLoadingState());
     result.when(
       ok: (data) {
-        if (data.name!.isNotEmpty) {
-          emit(DetailsLoadedState(pokemon: data));
-        }
+        emit(DetailsLoadedState(pokemon: data));
       },
       err: (err) => {emit(DetailsErrorState(error: err.toString()))},
     );
