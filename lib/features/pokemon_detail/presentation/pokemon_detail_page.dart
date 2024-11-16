@@ -79,7 +79,6 @@ class _Body extends StatelessWidget {
           return Expanded(
             child: Stack(
               children: [
-                // Pokemon Image
                 Positioned(
                   top: 0,
                   left: 0,

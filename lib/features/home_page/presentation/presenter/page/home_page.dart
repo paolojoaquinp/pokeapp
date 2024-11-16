@@ -48,7 +48,7 @@ class _Page extends StatelessWidget {
             'assets/images/pokeapp-icon.png',
             height: kToolbarHeight,
             fit: BoxFit.cover,
-          ),
+        ),
         ),
         body: const _Body(),
       ),

@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokeapp/core/utils/utils.dart';
 import 'package:pokeapp/features/favorites_page/presentation/bloc/favorites_bloc.dart';
 import 'package:pokeapp/features/pokemon_detail/presentation/pokemon_detail_page.dart';
+import 'package:pokeapp/features/search_page/presentation/page/search_page.dart';
 class PokemonCard extends StatelessWidget {
   const PokemonCard({
     super.key,
@@ -48,7 +50,7 @@ class PokemonCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '#25 $pokemonName',
+                      '#${Utils.extractPenultimateValue(urlDetail)} ${pokemonName.capitalize()}',
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
@@ -69,18 +71,20 @@ class PokemonCard extends StatelessWidget {
                 height: 150.0, // Tamaño fijo o relativo (ajustable según el diseño)
                 margin: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
-                  color: Colors.brown[200],
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: Hero(
                   tag: urlDetail,
-                  child: CachedNetworkImage(
-                    imageUrl: 'https://img.pokemondb.net/artwork/$pokemonName.jpg',
-                    fit: BoxFit.contain,
-                    placeholder: (context, url) => const Center(
-                      child: CircularProgressIndicator(),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(50)),
+                    child: CachedNetworkImage(
+                      imageUrl: 'https://img.pokemondb.net/artwork/$pokemonName.jpg',
+                      fit: BoxFit.fitHeight,
+                      placeholder: (context, url) => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      errorWidget: (context, url, error) => const Icon(Icons.error),
                     ),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),
                 ),
               ),
