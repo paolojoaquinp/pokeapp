@@ -10,3 +10,11 @@ class InitialEvent extends HomeEvent {
   @override
   List<Object> get props => [];
 }
+
+class RefreshEvent extends HomeEvent {
+  const RefreshEvent();
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}

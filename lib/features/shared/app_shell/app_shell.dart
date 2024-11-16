@@ -2,9 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/core/constants/app_strings.dart';
-import 'package:pokeapp/features/favorites_page/presentation/page/favorites_page.dart';
+import 'package:pokeapp/features/favorites_page/presenter/page/favorites_page.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/page/home_page.dart';
-import 'package:pokeapp/features/search_page/presentation/page/search_page.dart';
 import 'package:pokeapp/features/shared/app_shell/bloc/app_shell_bloc.dart';
 
 class AppShell extends StatelessWidget {
@@ -12,7 +11,6 @@ class AppShell extends StatelessWidget {
 
   static final List<Widget> _pages = [
     const HomePage(),
-    const SearchPage(),
     const FavoritesPage(),
   ];
 
@@ -28,23 +26,20 @@ class AppShell extends StatelessWidget {
               children: _pages,
             ),
             bottomNavigationBar: NavigationBar(
+              indicatorColor: Colors.white,
               selectedIndex: state.currentPageIndex,
+              backgroundColor: Colors.white,
               onDestinationSelected: (index) => 
                 context.read<AppShellBloc>().add(AppShellPageChangedEvent(index)),
               destinations: const [
                 NavigationDestination(
                   icon: Icon(Icons.home_outlined),
-                  selectedIcon: Icon(Icons.home),
+                  selectedIcon: Icon(Icons.home,color: Colors.red,),
                   label: AppStrings.home,
                 ),
                 NavigationDestination(
-                  icon: Icon(Icons.search_outlined),
-                  selectedIcon: Icon(Icons.search),
-                  label: AppStrings.search,
-                ),
-                NavigationDestination(
                   icon: Icon(Icons.favorite_border),
-                  selectedIcon: Icon(Icons.favorite),
+                  selectedIcon: Icon(Icons.favorite, color: Colors.red,),
                   label: AppStrings.favorites,
                 ),
               ],

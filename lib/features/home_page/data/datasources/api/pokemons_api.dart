@@ -28,6 +28,29 @@ class PokemonsApi {
       return Err('An unexpected error occurred: $e');
     }
   }
+  
+  Future<Result<PokemonResponse, String>> fetchPokemon() async {
+    try {
+      final response = await _dio.get(
+        'https://pokeapi.co/api/v2/pokemon?limit=1000',
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        final json = response.data;
+        final pokemonResponse = PokemonResponse.fromJson(json);
+        return Ok(pokemonResponse);
+      }
+      return Err('Failed to fetch Pokémon: ${response.statusCode}');
+    } catch (e) {
+      return Err('An unexpected error occurred: $e');
+    }
+  }
 
   Future<Result<Pokemon, String>> getPokemonDetails(String url) async {
     try {

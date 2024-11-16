@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokeapp/core/config/splash_screen.dart';
 import 'package:pokeapp/core/helpers/hive_helper.dart';
-import 'package:pokeapp/features/shared/app_shell/app_shell.dart';
+import 'package:pokeapp/features/favorites_page/presenter/bloc/favorites_bloc.dart';
+import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
+import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,13 +17,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Pokemon App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return BlocProvider<FavoritesBloc>(
+      create: (context) => FavoritesBloc(
+          pokemonRepository: PokemonRepositoryImpl(
+        api: PokemonsApi(),
+        hiveHelper: HiveHelper(),
+      ))
+        ..add(const FavoritesInitialEvent()),
+      child: MaterialApp(
+        title: 'Pokemon App',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: SplashScreen(),
       ),
-      home: const AppShell()
     );
   }
 }
