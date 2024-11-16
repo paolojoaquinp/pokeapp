@@ -24,3 +24,12 @@ class SearchPokemonEvent extends SearchEvent {
   @override
   List<Object> get props => [pokemonRequestName];
 }
+
+class SearchTextChangedEvent extends SearchEvent {
+  const SearchTextChangedEvent({required this.query});
+
+  final String query;
+
+  @override
+  List<Object> get props => [query];
+}

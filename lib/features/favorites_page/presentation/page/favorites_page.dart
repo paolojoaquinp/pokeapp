@@ -56,10 +56,13 @@ class _Body extends StatelessWidget {
                     itemCount: state.pokemons.length,
                     itemBuilder: (_, index) {
                       final pokemon = state.pokemons[index];
-                      return PokemonCard(
-                        pokemonName: pokemon.name!,
-                        urlDetail:
-                            'https://pokeapi.co/api/v2/pokemon/${pokemon.name!}',
+                      return SizedBox(
+                        height: MediaQuery.sizeOf(context).height * 0.75,
+                        child: PokemonCard(
+                          pokemonName: pokemon.name!,
+                          urlDetail:
+                              'https://pokeapi.co/api/v2/pokemon/${pokemon.name!}',
+                        ),
                       );
                     }),
               ),

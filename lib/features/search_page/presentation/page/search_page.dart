@@ -60,7 +60,7 @@ class _Body extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                BackButton(),
+                const BackButton(),
                 SizedBox(
                   width: MediaQuery.sizeOf(context).width * 0.65,
                   child: TextField(
@@ -70,12 +70,12 @@ class _Body extends StatelessWidget {
                     ),
                     controller: searchBloc.controller,
                     textInputAction: TextInputAction.search,
-                    onSubmitted: (value) {
-                      searchBloc.add(SearchPokemonEvent(pokemonRequestName: value));
+                    onChanged: (value) {
+                      searchBloc.add(SearchTextChangedEvent(query: value));
                     },
                   ),
                 ),
-                CloseButton(),
+                const CloseButton(),
               ],
             ),
             Expanded(

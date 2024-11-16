@@ -12,7 +12,6 @@ class AppShell extends StatelessWidget {
 
   static final List<Widget> _pages = [
     const HomePage(),
-    const SearchPage(),
     const FavoritesPage(),
   ];
 
@@ -36,11 +35,6 @@ class AppShell extends StatelessWidget {
                   icon: Icon(Icons.home_outlined),
                   selectedIcon: Icon(Icons.home),
                   label: AppStrings.home,
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.search_outlined),
-                  selectedIcon: Icon(Icons.search),
-                  label: AppStrings.search,
                 ),
                 NavigationDestination(
                   icon: Icon(Icons.favorite_border),

@@ -42,13 +42,6 @@ class _Page extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-            onPressed: () => Navigator.pop(context),
-          ),
           backgroundColor: Colors.red,
           centerTitle: true,
           title: Image.asset(
