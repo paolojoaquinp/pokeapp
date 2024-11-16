@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokeapp/features/favorites_page/presentation/bloc/favorites_bloc.dart';
+import 'package:pokeapp/features/favorites_page/presenter/bloc/favorites_bloc.dart';
 
 class ClearFavoritesButton extends StatelessWidget {
   const ClearFavoritesButton({super.key, required this.onPressed});

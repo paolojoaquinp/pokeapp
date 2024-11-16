@@ -2,9 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/core/constants/app_strings.dart';
-import 'package:pokeapp/features/favorites_page/presentation/bloc/favorites_bloc.dart';
-import 'package:pokeapp/features/favorites_page/presentation/page/widgets/clear_all_button.dart';
-import 'package:pokeapp/features/pokemon_detail/presentation/pokemon_detail_page.dart';
+import 'package:pokeapp/features/favorites_page/presenter/bloc/favorites_bloc.dart';
+import 'package:pokeapp/features/favorites_page/presenter/page/widgets/clear_all_button.dart';
+import 'package:pokeapp/features/pokemon_detail/presenter/page/pokemon_detail_page.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({super.key});

@@ -7,8 +7,8 @@ import 'package:pokeapp/core/utils/utils.dart';
 import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
 import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/bloc/home_bloc.dart';
-import 'package:pokeapp/features/pokemon_detail/presentation/pokemon_detail_page.dart';
-import 'package:pokeapp/features/search_page/presentation/bloc/search_bloc.dart';
+import 'package:pokeapp/features/pokemon_detail/presenter/page/pokemon_detail_page.dart';
+import 'package:pokeapp/features/search_page/presenter/bloc/search_bloc.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({

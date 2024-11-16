@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/core/helpers/hive_helper.dart';
-import 'package:pokeapp/features/favorites_page/presentation/bloc/favorites_bloc.dart';
+import 'package:pokeapp/features/favorites_page/presenter/bloc/favorites_bloc.dart';
 import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
 import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/bloc/home_bloc.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/page/widgets/search_bar.dart';
-import 'package:pokeapp/features/pokemon_detail/presentation/pokemon_detail_page.dart';
+import 'package:pokeapp/features/pokemon_detail/presenter/page/pokemon_detail_page.dart';
 import 'package:pokeapp/features/shared/widgets/pokemon_card/pokemon_card.dart';
 
 class HomePage extends StatelessWidget {

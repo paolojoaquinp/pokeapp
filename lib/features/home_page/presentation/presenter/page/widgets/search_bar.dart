@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokeapp/features/search_page/presentation/page/search_page.dart';
+import 'package:pokeapp/features/search_page/presenter/page/search_page.dart';
 
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget({Key? key}) : super(key: key);

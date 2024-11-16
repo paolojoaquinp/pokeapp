@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/core/utils/utils.dart';
-import 'package:pokeapp/features/favorites_page/presentation/bloc/favorites_bloc.dart';
+import 'package:pokeapp/features/favorites_page/presenter/bloc/favorites_bloc.dart';
 
 class PokemonCard extends StatelessWidget {
   const PokemonCard({

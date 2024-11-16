@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/core/constants/app_strings.dart';
-import 'package:pokeapp/features/favorites_page/presentation/page/favorites_page.dart';
+import 'package:pokeapp/features/favorites_page/presenter/page/favorites_page.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/page/home_page.dart';
 import 'package:pokeapp/features/shared/app_shell/bloc/app_shell_bloc.dart';
 
