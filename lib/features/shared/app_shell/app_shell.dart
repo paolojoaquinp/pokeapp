@@ -27,18 +27,20 @@ class AppShell extends StatelessWidget {
               children: _pages,
             ),
             bottomNavigationBar: NavigationBar(
+              indicatorColor: Colors.white,
               selectedIndex: state.currentPageIndex,
+              backgroundColor: Colors.white,
               onDestinationSelected: (index) => 
                 context.read<AppShellBloc>().add(AppShellPageChangedEvent(index)),
               destinations: const [
                 NavigationDestination(
                   icon: Icon(Icons.home_outlined),
-                  selectedIcon: Icon(Icons.home),
+                  selectedIcon: Icon(Icons.home,color: Colors.red,),
                   label: AppStrings.home,
                 ),
                 NavigationDestination(
                   icon: Icon(Icons.favorite_border),
-                  selectedIcon: Icon(Icons.favorite),
+                  selectedIcon: Icon(Icons.favorite, color: Colors.red,),
                   label: AppStrings.favorites,
                 ),
               ],

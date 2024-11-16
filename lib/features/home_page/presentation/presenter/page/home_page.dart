@@ -41,6 +41,7 @@ class _Page extends StatelessWidget {
         }
       },
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.red,
           centerTitle: true,
