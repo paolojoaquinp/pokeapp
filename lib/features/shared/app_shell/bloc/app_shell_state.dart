@@ -1,16 +1,16 @@
-part of 'navigation_bar_bloc.dart';
+part of 'app_shell_bloc.dart';
 
-class NavigationState extends Equatable {
+class AppShellState extends Equatable {
   final int currentPageIndex;
 
-  const NavigationState({
+  const AppShellState({
     this.currentPageIndex = 0,
   });
 
-  NavigationState copyWith({
+  AppShellState copyWith({
     int? currentPageIndex,
   }) {
-    return NavigationState(
+    return AppShellState(
       currentPageIndex: currentPageIndex ?? this.currentPageIndex,
     );
   }

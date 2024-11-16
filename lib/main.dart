@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokeapp/core/helpers/hive_helper.dart';
-import 'package:pokeapp/features/shared/custom_navigation_bar/custom_navigation_bar.dart';
+import 'package:pokeapp/features/shared/app_shell/app_shell.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const BottomNavigationComponent()
+      home: const AppShell()
     );
   }
 }

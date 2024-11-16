@@ -1,13 +1,14 @@
 // bottom_navigation.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokeapp/core/constants/app_strings.dart';
 import 'package:pokeapp/features/favorites_page/presentation/page/favorites_page.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/page/home_page.dart';
 import 'package:pokeapp/features/search_page/presentation/page/search_page.dart';
-import 'package:pokeapp/features/shared/custom_navigation_bar/bloc/navigation_bar_bloc.dart';
+import 'package:pokeapp/features/shared/app_shell/bloc/app_shell_bloc.dart';
 
-class BottomNavigationComponent extends StatelessWidget {
-  const BottomNavigationComponent({super.key});
+class AppShell extends StatelessWidget {
+  const AppShell({super.key});
 
   static final List<Widget> _pages = [
     const HomePage(),
@@ -18,8 +19,8 @@ class BottomNavigationComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => NavigationBloc(),
-      child: BlocBuilder<NavigationBloc, NavigationState>(
+      create: (_) => AppShellBloc(),
+      child: BlocBuilder<AppShellBloc, AppShellState>(
         builder: (context, state) {
           return Scaffold(
             body: IndexedStack(
@@ -29,22 +30,22 @@ class BottomNavigationComponent extends StatelessWidget {
             bottomNavigationBar: NavigationBar(
               selectedIndex: state.currentPageIndex,
               onDestinationSelected: (index) => 
-                context.read<NavigationBloc>().add(NavigationBarPageChanged(index)),
+                context.read<AppShellBloc>().add(AppShellPageChangedEvent(index)),
               destinations: const [
                 NavigationDestination(
                   icon: Icon(Icons.home_outlined),
                   selectedIcon: Icon(Icons.home),
-                  label: 'Home',
+                  label: AppStrings.home,
                 ),
                 NavigationDestination(
                   icon: Icon(Icons.search_outlined),
                   selectedIcon: Icon(Icons.search),
-                  label: 'Buscar',
+                  label: AppStrings.search,
                 ),
                 NavigationDestination(
                   icon: Icon(Icons.favorite_border),
                   selectedIcon: Icon(Icons.favorite),
-                  label: 'Favorites',
+                  label: AppStrings.favorites,
                 ),
               ],
             ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
 import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
-import 'package:pokeapp/features/home_page/presentation/children/pokemon_detail/presentation/bloc/pokemon_details_bloc.dart';
+import 'package:pokeapp/features/pokemon_detail/presentation/bloc/pokemon_details_bloc.dart';
 
 class PokemonDetailPage extends StatelessWidget {
   const PokemonDetailPage({
