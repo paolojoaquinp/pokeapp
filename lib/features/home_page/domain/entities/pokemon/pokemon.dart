@@ -180,14 +180,14 @@ class Other with _$Other {
 @freezed
 class Sprites with _$Sprites {
   factory Sprites({
-    String? backDefault,
-    String? backFemale,
-    String? backShiny,
-    String? backShinyFemale,
-    String? frontDefault,
-    String? frontFemale,
-    String? frontShiny,
-    String? frontShinyFemale,
+    String? back_default,
+    String? back_female,
+    String? back_shiny,
+    String? back_shiny_female,
+    String? front_default,
+    String? front_female,
+    String? front_shiny,
+    String? front_shiny_Female,
     Other? other,
     Versions? versions,
     Sprites? animated,

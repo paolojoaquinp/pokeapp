@@ -294,14 +294,14 @@ Map<String, dynamic> _$$OtherImplToJson(_$OtherImpl instance) =>
 
 _$SpritesImpl _$$SpritesImplFromJson(Map<String, dynamic> json) =>
     _$SpritesImpl(
-      backDefault: json['backDefault'] as String?,
-      backFemale: json['backFemale'] as String?,
-      backShiny: json['backShiny'] as String?,
-      backShinyFemale: json['backShinyFemale'] as String?,
-      frontDefault: json['frontDefault'] as String?,
-      frontFemale: json['frontFemale'] as String?,
-      frontShiny: json['frontShiny'] as String?,
-      frontShinyFemale: json['frontShinyFemale'] as String?,
+      back_default: json['back_default'] as String?,
+      back_female: json['back_female'] as String?,
+      back_shiny: json['back_shiny'] as String?,
+      back_shiny_female: json['back_shiny_female'] as String?,
+      front_default: json['front_default'] as String?,
+      front_female: json['front_female'] as String?,
+      front_shiny: json['front_shiny'] as String?,
+      front_shiny_Female: json['front_shiny_Female'] as String?,
       other: json['other'] == null
           ? null
           : Other.fromJson(json['other'] as Map<String, dynamic>),
@@ -315,14 +315,14 @@ _$SpritesImpl _$$SpritesImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$SpritesImplToJson(_$SpritesImpl instance) =>
     <String, dynamic>{
-      'backDefault': instance.backDefault,
-      'backFemale': instance.backFemale,
-      'backShiny': instance.backShiny,
-      'backShinyFemale': instance.backShinyFemale,
-      'frontDefault': instance.frontDefault,
-      'frontFemale': instance.frontFemale,
-      'frontShiny': instance.frontShiny,
-      'frontShinyFemale': instance.frontShinyFemale,
+      'back_default': instance.back_default,
+      'back_female': instance.back_female,
+      'back_shiny': instance.back_shiny,
+      'back_shiny_female': instance.back_shiny_female,
+      'front_default': instance.front_default,
+      'front_female': instance.front_female,
+      'front_shiny': instance.front_shiny,
+      'front_shiny_Female': instance.front_shiny_Female,
       'other': instance.other,
       'versions': instance.versions,
       'animated': instance.animated,

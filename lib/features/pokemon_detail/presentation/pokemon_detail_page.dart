@@ -48,19 +48,16 @@ class _Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.red,
-      body: Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.red,
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.red,
-          title: Image.asset(
-            'assets/images/pokeapp-icon.png',
-            fit: BoxFit.cover,
-            height: kToolbarHeight,
-          ),
+        title: Image.asset(
+          'assets/images/pokeapp-icon.png',
+          fit: BoxFit.cover,
+          height: kToolbarHeight,
         ),
-        body: _Body(urlDetail: urlDetail, pokemonName: pokemonName),
       ),
+      body: _Body(urlDetail: urlDetail, pokemonName: pokemonName),
     );
   }
 }
@@ -76,39 +73,48 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Stack(
-        children: [
-          // Pokemon Image
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: Hero(
-              tag: urlDetail,
-              child: CachedNetworkImage(
-                imageUrl: 'https://img.pokemondb.net/artwork/$pokemonName.jpg',
-                height: 200,
-                placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
-            ),
-          ),
-          // White Card Content
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-              ),
-              child: BlocBuilder<PokemonDetailsBloc, PokemonDetailsState>(
-                builder: (context, state) {
-                  if (state is DetailsLoadedState) {
-                    return SingleChildScrollView(
+    return BlocBuilder<PokemonDetailsBloc, PokemonDetailsState>(
+      builder: (context, state) {
+        if (state is DetailsLoadedState) {
+          return Expanded(
+            child: Stack(
+              children: [
+                // Pokemon Image
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  child: Hero(
+                    tag: urlDetail,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal:  36.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              'https://img.pokemondb.net/artwork/$pokemonName.jpg',
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) =>
+                              const CircularProgressIndicator(),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                // White Card Content
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(30)),
+                    ),
+                    child: SingleChildScrollView(
                       padding: const EdgeInsets.all(24),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,15 +132,15 @@ class _Body extends StatelessWidget {
                           _WhereToFind(pokemon: state.pokemon),
                         ],
                       ),
-                    );
-                  }
-                  return const Center(child: CircularProgressIndicator());
-                },
-              ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
+          );
+        }
+        return const Center(child: CircularProgressIndicator());
+      },
     );
   }
 }
@@ -250,8 +256,8 @@ class _StatCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            icon, 
-            color: isValueMissing ? Colors.grey.shade400 : color, 
+            icon,
+            color: isValueMissing ? Colors.grey.shade400 : color,
             size: 20,
           ),
           const SizedBox(height: 4),
@@ -283,7 +289,7 @@ class _StatCard extends StatelessWidget {
       ),
     );
   }
-  }
+}
 
 class _WhereToFind extends StatelessWidget {
   const _WhereToFind({required this.pokemon});

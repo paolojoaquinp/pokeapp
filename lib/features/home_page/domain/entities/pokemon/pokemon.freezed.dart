@@ -3353,14 +3353,14 @@ Sprites _$SpritesFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Sprites {
-  String? get backDefault => throw _privateConstructorUsedError;
-  String? get backFemale => throw _privateConstructorUsedError;
-  String? get backShiny => throw _privateConstructorUsedError;
-  String? get backShinyFemale => throw _privateConstructorUsedError;
-  String? get frontDefault => throw _privateConstructorUsedError;
-  String? get frontFemale => throw _privateConstructorUsedError;
-  String? get frontShiny => throw _privateConstructorUsedError;
-  String? get frontShinyFemale => throw _privateConstructorUsedError;
+  String? get back_default => throw _privateConstructorUsedError;
+  String? get back_female => throw _privateConstructorUsedError;
+  String? get back_shiny => throw _privateConstructorUsedError;
+  String? get back_shiny_female => throw _privateConstructorUsedError;
+  String? get front_default => throw _privateConstructorUsedError;
+  String? get front_female => throw _privateConstructorUsedError;
+  String? get front_shiny => throw _privateConstructorUsedError;
+  String? get front_shiny_Female => throw _privateConstructorUsedError;
   Other? get other => throw _privateConstructorUsedError;
   Versions? get versions => throw _privateConstructorUsedError;
   Sprites? get animated => throw _privateConstructorUsedError;
@@ -3380,14 +3380,14 @@ abstract class $SpritesCopyWith<$Res> {
       _$SpritesCopyWithImpl<$Res, Sprites>;
   @useResult
   $Res call(
-      {String? backDefault,
-      String? backFemale,
-      String? backShiny,
-      String? backShinyFemale,
-      String? frontDefault,
-      String? frontFemale,
-      String? frontShiny,
-      String? frontShinyFemale,
+      {String? back_default,
+      String? back_female,
+      String? back_shiny,
+      String? back_shiny_female,
+      String? front_default,
+      String? front_female,
+      String? front_shiny,
+      String? front_shiny_Female,
       Other? other,
       Versions? versions,
       Sprites? animated});
@@ -3412,50 +3412,50 @@ class _$SpritesCopyWithImpl<$Res, $Val extends Sprites>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? backDefault = freezed,
-    Object? backFemale = freezed,
-    Object? backShiny = freezed,
-    Object? backShinyFemale = freezed,
-    Object? frontDefault = freezed,
-    Object? frontFemale = freezed,
-    Object? frontShiny = freezed,
-    Object? frontShinyFemale = freezed,
+    Object? back_default = freezed,
+    Object? back_female = freezed,
+    Object? back_shiny = freezed,
+    Object? back_shiny_female = freezed,
+    Object? front_default = freezed,
+    Object? front_female = freezed,
+    Object? front_shiny = freezed,
+    Object? front_shiny_Female = freezed,
     Object? other = freezed,
     Object? versions = freezed,
     Object? animated = freezed,
   }) {
     return _then(_value.copyWith(
-      backDefault: freezed == backDefault
-          ? _value.backDefault
-          : backDefault // ignore: cast_nullable_to_non_nullable
+      back_default: freezed == back_default
+          ? _value.back_default
+          : back_default // ignore: cast_nullable_to_non_nullable
               as String?,
-      backFemale: freezed == backFemale
-          ? _value.backFemale
-          : backFemale // ignore: cast_nullable_to_non_nullable
+      back_female: freezed == back_female
+          ? _value.back_female
+          : back_female // ignore: cast_nullable_to_non_nullable
               as String?,
-      backShiny: freezed == backShiny
-          ? _value.backShiny
-          : backShiny // ignore: cast_nullable_to_non_nullable
+      back_shiny: freezed == back_shiny
+          ? _value.back_shiny
+          : back_shiny // ignore: cast_nullable_to_non_nullable
               as String?,
-      backShinyFemale: freezed == backShinyFemale
-          ? _value.backShinyFemale
-          : backShinyFemale // ignore: cast_nullable_to_non_nullable
+      back_shiny_female: freezed == back_shiny_female
+          ? _value.back_shiny_female
+          : back_shiny_female // ignore: cast_nullable_to_non_nullable
               as String?,
-      frontDefault: freezed == frontDefault
-          ? _value.frontDefault
-          : frontDefault // ignore: cast_nullable_to_non_nullable
+      front_default: freezed == front_default
+          ? _value.front_default
+          : front_default // ignore: cast_nullable_to_non_nullable
               as String?,
-      frontFemale: freezed == frontFemale
-          ? _value.frontFemale
-          : frontFemale // ignore: cast_nullable_to_non_nullable
+      front_female: freezed == front_female
+          ? _value.front_female
+          : front_female // ignore: cast_nullable_to_non_nullable
               as String?,
-      frontShiny: freezed == frontShiny
-          ? _value.frontShiny
-          : frontShiny // ignore: cast_nullable_to_non_nullable
+      front_shiny: freezed == front_shiny
+          ? _value.front_shiny
+          : front_shiny // ignore: cast_nullable_to_non_nullable
               as String?,
-      frontShinyFemale: freezed == frontShinyFemale
-          ? _value.frontShinyFemale
-          : frontShinyFemale // ignore: cast_nullable_to_non_nullable
+      front_shiny_Female: freezed == front_shiny_Female
+          ? _value.front_shiny_Female
+          : front_shiny_Female // ignore: cast_nullable_to_non_nullable
               as String?,
       other: freezed == other
           ? _value.other
@@ -3523,14 +3523,14 @@ abstract class _$$SpritesImplCopyWith<$Res> implements $SpritesCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String? backDefault,
-      String? backFemale,
-      String? backShiny,
-      String? backShinyFemale,
-      String? frontDefault,
-      String? frontFemale,
-      String? frontShiny,
-      String? frontShinyFemale,
+      {String? back_default,
+      String? back_female,
+      String? back_shiny,
+      String? back_shiny_female,
+      String? front_default,
+      String? front_female,
+      String? front_shiny,
+      String? front_shiny_Female,
       Other? other,
       Versions? versions,
       Sprites? animated});
@@ -3556,50 +3556,50 @@ class __$$SpritesImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? backDefault = freezed,
-    Object? backFemale = freezed,
-    Object? backShiny = freezed,
-    Object? backShinyFemale = freezed,
-    Object? frontDefault = freezed,
-    Object? frontFemale = freezed,
-    Object? frontShiny = freezed,
-    Object? frontShinyFemale = freezed,
+    Object? back_default = freezed,
+    Object? back_female = freezed,
+    Object? back_shiny = freezed,
+    Object? back_shiny_female = freezed,
+    Object? front_default = freezed,
+    Object? front_female = freezed,
+    Object? front_shiny = freezed,
+    Object? front_shiny_Female = freezed,
     Object? other = freezed,
     Object? versions = freezed,
     Object? animated = freezed,
   }) {
     return _then(_$SpritesImpl(
-      backDefault: freezed == backDefault
-          ? _value.backDefault
-          : backDefault // ignore: cast_nullable_to_non_nullable
+      back_default: freezed == back_default
+          ? _value.back_default
+          : back_default // ignore: cast_nullable_to_non_nullable
               as String?,
-      backFemale: freezed == backFemale
-          ? _value.backFemale
-          : backFemale // ignore: cast_nullable_to_non_nullable
+      back_female: freezed == back_female
+          ? _value.back_female
+          : back_female // ignore: cast_nullable_to_non_nullable
               as String?,
-      backShiny: freezed == backShiny
-          ? _value.backShiny
-          : backShiny // ignore: cast_nullable_to_non_nullable
+      back_shiny: freezed == back_shiny
+          ? _value.back_shiny
+          : back_shiny // ignore: cast_nullable_to_non_nullable
               as String?,
-      backShinyFemale: freezed == backShinyFemale
-          ? _value.backShinyFemale
-          : backShinyFemale // ignore: cast_nullable_to_non_nullable
+      back_shiny_female: freezed == back_shiny_female
+          ? _value.back_shiny_female
+          : back_shiny_female // ignore: cast_nullable_to_non_nullable
               as String?,
-      frontDefault: freezed == frontDefault
-          ? _value.frontDefault
-          : frontDefault // ignore: cast_nullable_to_non_nullable
+      front_default: freezed == front_default
+          ? _value.front_default
+          : front_default // ignore: cast_nullable_to_non_nullable
               as String?,
-      frontFemale: freezed == frontFemale
-          ? _value.frontFemale
-          : frontFemale // ignore: cast_nullable_to_non_nullable
+      front_female: freezed == front_female
+          ? _value.front_female
+          : front_female // ignore: cast_nullable_to_non_nullable
               as String?,
-      frontShiny: freezed == frontShiny
-          ? _value.frontShiny
-          : frontShiny // ignore: cast_nullable_to_non_nullable
+      front_shiny: freezed == front_shiny
+          ? _value.front_shiny
+          : front_shiny // ignore: cast_nullable_to_non_nullable
               as String?,
-      frontShinyFemale: freezed == frontShinyFemale
-          ? _value.frontShinyFemale
-          : frontShinyFemale // ignore: cast_nullable_to_non_nullable
+      front_shiny_Female: freezed == front_shiny_Female
+          ? _value.front_shiny_Female
+          : front_shiny_Female // ignore: cast_nullable_to_non_nullable
               as String?,
       other: freezed == other
           ? _value.other
@@ -3621,14 +3621,14 @@ class __$$SpritesImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SpritesImpl implements _Sprites {
   _$SpritesImpl(
-      {this.backDefault,
-      this.backFemale,
-      this.backShiny,
-      this.backShinyFemale,
-      this.frontDefault,
-      this.frontFemale,
-      this.frontShiny,
-      this.frontShinyFemale,
+      {this.back_default,
+      this.back_female,
+      this.back_shiny,
+      this.back_shiny_female,
+      this.front_default,
+      this.front_female,
+      this.front_shiny,
+      this.front_shiny_Female,
       this.other,
       this.versions,
       this.animated});
@@ -3637,21 +3637,21 @@ class _$SpritesImpl implements _Sprites {
       _$$SpritesImplFromJson(json);
 
   @override
-  final String? backDefault;
+  final String? back_default;
   @override
-  final String? backFemale;
+  final String? back_female;
   @override
-  final String? backShiny;
+  final String? back_shiny;
   @override
-  final String? backShinyFemale;
+  final String? back_shiny_female;
   @override
-  final String? frontDefault;
+  final String? front_default;
   @override
-  final String? frontFemale;
+  final String? front_female;
   @override
-  final String? frontShiny;
+  final String? front_shiny;
   @override
-  final String? frontShinyFemale;
+  final String? front_shiny_Female;
   @override
   final Other? other;
   @override
@@ -3661,7 +3661,7 @@ class _$SpritesImpl implements _Sprites {
 
   @override
   String toString() {
-    return 'Sprites(backDefault: $backDefault, backFemale: $backFemale, backShiny: $backShiny, backShinyFemale: $backShinyFemale, frontDefault: $frontDefault, frontFemale: $frontFemale, frontShiny: $frontShiny, frontShinyFemale: $frontShinyFemale, other: $other, versions: $versions, animated: $animated)';
+    return 'Sprites(back_default: $back_default, back_female: $back_female, back_shiny: $back_shiny, back_shiny_female: $back_shiny_female, front_default: $front_default, front_female: $front_female, front_shiny: $front_shiny, front_shiny_Female: $front_shiny_Female, other: $other, versions: $versions, animated: $animated)';
   }
 
   @override
@@ -3669,22 +3669,22 @@ class _$SpritesImpl implements _Sprites {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SpritesImpl &&
-            (identical(other.backDefault, backDefault) ||
-                other.backDefault == backDefault) &&
-            (identical(other.backFemale, backFemale) ||
-                other.backFemale == backFemale) &&
-            (identical(other.backShiny, backShiny) ||
-                other.backShiny == backShiny) &&
-            (identical(other.backShinyFemale, backShinyFemale) ||
-                other.backShinyFemale == backShinyFemale) &&
-            (identical(other.frontDefault, frontDefault) ||
-                other.frontDefault == frontDefault) &&
-            (identical(other.frontFemale, frontFemale) ||
-                other.frontFemale == frontFemale) &&
-            (identical(other.frontShiny, frontShiny) ||
-                other.frontShiny == frontShiny) &&
-            (identical(other.frontShinyFemale, frontShinyFemale) ||
-                other.frontShinyFemale == frontShinyFemale) &&
+            (identical(other.back_default, back_default) ||
+                other.back_default == back_default) &&
+            (identical(other.back_female, back_female) ||
+                other.back_female == back_female) &&
+            (identical(other.back_shiny, back_shiny) ||
+                other.back_shiny == back_shiny) &&
+            (identical(other.back_shiny_female, back_shiny_female) ||
+                other.back_shiny_female == back_shiny_female) &&
+            (identical(other.front_default, front_default) ||
+                other.front_default == front_default) &&
+            (identical(other.front_female, front_female) ||
+                other.front_female == front_female) &&
+            (identical(other.front_shiny, front_shiny) ||
+                other.front_shiny == front_shiny) &&
+            (identical(other.front_shiny_Female, front_shiny_Female) ||
+                other.front_shiny_Female == front_shiny_Female) &&
             (identical(other.other, this.other) || other.other == this.other) &&
             (identical(other.versions, versions) ||
                 other.versions == versions) &&
@@ -3696,14 +3696,14 @@ class _$SpritesImpl implements _Sprites {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      backDefault,
-      backFemale,
-      backShiny,
-      backShinyFemale,
-      frontDefault,
-      frontFemale,
-      frontShiny,
-      frontShinyFemale,
+      back_default,
+      back_female,
+      back_shiny,
+      back_shiny_female,
+      front_default,
+      front_female,
+      front_shiny,
+      front_shiny_Female,
       other,
       versions,
       animated);
@@ -3726,14 +3726,14 @@ class _$SpritesImpl implements _Sprites {
 
 abstract class _Sprites implements Sprites {
   factory _Sprites(
-      {final String? backDefault,
-      final String? backFemale,
-      final String? backShiny,
-      final String? backShinyFemale,
-      final String? frontDefault,
-      final String? frontFemale,
-      final String? frontShiny,
-      final String? frontShinyFemale,
+      {final String? back_default,
+      final String? back_female,
+      final String? back_shiny,
+      final String? back_shiny_female,
+      final String? front_default,
+      final String? front_female,
+      final String? front_shiny,
+      final String? front_shiny_Female,
       final Other? other,
       final Versions? versions,
       final Sprites? animated}) = _$SpritesImpl;
@@ -3741,21 +3741,21 @@ abstract class _Sprites implements Sprites {
   factory _Sprites.fromJson(Map<String, dynamic> json) = _$SpritesImpl.fromJson;
 
   @override
-  String? get backDefault;
+  String? get back_default;
   @override
-  String? get backFemale;
+  String? get back_female;
   @override
-  String? get backShiny;
+  String? get back_shiny;
   @override
-  String? get backShinyFemale;
+  String? get back_shiny_female;
   @override
-  String? get frontDefault;
+  String? get front_default;
   @override
-  String? get frontFemale;
+  String? get front_female;
   @override
-  String? get frontShiny;
+  String? get front_shiny;
   @override
-  String? get frontShinyFemale;
+  String? get front_shiny_Female;
   @override
   Other? get other;
   @override
