@@ -4,7 +4,7 @@ import 'package:pokeapp/core/helpers/hive_helper.dart';
 import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
 import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/bloc/home_bloc.dart';
-import 'package:pokeapp/features/home_page/presentation/presenter/page/widgets/pokemon_card/pokemon_card.dart';
+import 'package:pokeapp/features/shared/widgets/pokemon_card/pokemon_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

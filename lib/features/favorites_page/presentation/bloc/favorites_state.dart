@@ -19,15 +19,28 @@ class FavoritesLoadingState extends FavoritesState {
   @override
   List<Object> get props => [];
 }
+
 class FavoritesLoadedState extends FavoritesState {
+  final List<Pokemon> pokemons;
+  final Map<String, bool> favoriteStatus;
+
   const FavoritesLoadedState({
-    required this.pokemons
+    required this.pokemons,
+    this.favoriteStatus = const {},
   });
 
-  final List<Pokemon> pokemons;
-
   @override
-  List<Object> get props => [pokemons];
+  List<Object> get props => [pokemons, favoriteStatus];
+
+  FavoritesLoadedState copyWith({
+    List<Pokemon>? pokemons,
+    Map<String, bool>? favoriteStatus,
+  }) {
+    return FavoritesLoadedState(
+      pokemons: pokemons ?? this.pokemons,
+      favoriteStatus: favoriteStatus ?? this.favoriteStatus,
+    );
+  }
 }
 
 class FavoritesErrorState extends FavoritesState {
@@ -42,3 +55,5 @@ class FavoritesErrorState extends FavoritesState {
 class PokemonFavoritesInitial extends FavoritesState {}
 class PokemonFavoritesClearingState extends FavoritesState {}
 class PokemonFavoritesClearedState extends FavoritesState {}
+
+

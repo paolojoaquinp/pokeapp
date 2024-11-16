@@ -5,7 +5,7 @@ import 'package:pokeapp/features/favorites_page/presentation/bloc/favorites_bloc
 import 'package:pokeapp/features/favorites_page/presentation/page/widgets/clear_all_button.dart';
 import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
 import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
-import 'package:pokeapp/features/home_page/presentation/presenter/page/widgets/pokemon_card/pokemon_card.dart';
+import 'package:pokeapp/features/shared/widgets/pokemon_card/pokemon_card.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({super.key});
