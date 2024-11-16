@@ -64,18 +64,18 @@ class _Body extends StatelessWidget {
     final widthScreen = MediaQuery.sizeOf(context).width;
     return SingleChildScrollView(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, // Asegura alineación
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.only(
               top: 16.0,
               left: widthScreen * 0.09,
               right: widthScreen * 0.09,
-            ), 
+            ),
             child: SearchBarWidget(),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.75, // Control de altura
+            height: MediaQuery.of(context).size.height * 0.65,
             child: BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) {
                 if (state is HomeLoadingState) {

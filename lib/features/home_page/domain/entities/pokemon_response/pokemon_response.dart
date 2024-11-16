@@ -3,8 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'pokemon_response.freezed.dart';
 part 'pokemon_response.g.dart';
 
-
-
 @freezed
 class PokemonResponse with _$PokemonResponse {
     factory PokemonResponse({

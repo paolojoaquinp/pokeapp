@@ -73,8 +73,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       return; // No hay datos para filtrar
     }
 
-
-    // Filtrar sobre la lista original
     final filteredPokemons = _originalPokemons!.where((pokemon) {
       final name = pokemon['name']?.toLowerCase() ?? '';
       return name.contains(event.query.toLowerCase());

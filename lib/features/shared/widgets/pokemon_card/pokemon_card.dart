@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/features/favorites_page/presentation/bloc/favorites_bloc.dart';
 import 'package:pokeapp/features/pokemon_detail/presentation/pokemon_detail_page.dart';
-
 class PokemonCard extends StatelessWidget {
   const PokemonCard({
     super.key,
@@ -17,7 +16,18 @@ class PokemonCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<FavoritesBloc>().add(CheckFavoriteStatusEvent(id: urlDetail));
-    return Expanded(
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => PokemonDetailPage(
+              pokemonName: pokemonName,
+              urlDetail: urlDetail,
+            ),
+          ),
+        );
+      },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
         decoration: BoxDecoration(
@@ -28,10 +38,10 @@ class PokemonCard extends StatelessWidget {
             width: 8.0,
           ),
         ),
-        child: LayoutBuilder(builder: (context, constraints) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
+        child: SingleChildScrollView(
+          child: Column(
             children: [
+              // Encabezado con nombre y XP
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -53,38 +63,32 @@ class PokemonCard extends StatelessWidget {
                   ],
                 ),
               ),
-      
-              // Pokemon Image
-              SizedBox(
-                height:
-                    constraints.maxHeight * 0.42, // 50% de la altura disponible
-                child: Container(
-                  margin: const EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    color: Colors.brown[200],
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Hero(
-                    tag: urlDetail,
-                    child: CachedNetworkImage(
-                      imageUrl:
-                          'https://img.pokemondb.net/artwork/$pokemonName.jpg',
-                      fit: BoxFit.contain,
-                      placeholder: (context, url) => const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+
+              // Imagen del Pokémon
+              Container(
+                height: 150.0, // Tamaño fijo o relativo (ajustable según el diseño)
+                margin: const EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  color: Colors.brown[200],
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Hero(
+                  tag: urlDetail,
+                  child: CachedNetworkImage(
+                    imageUrl: 'https://img.pokemondb.net/artwork/$pokemonName.jpg',
+                    fit: BoxFit.contain,
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(),
                     ),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),
                 ),
               ),
-      
-              // Pokemon Details
+
+              // Descripción e íconos
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
@@ -121,6 +125,8 @@ class PokemonCard extends StatelessWidget {
                         fontSize: 14.0,
                       ),
                     ),
+
+                    // Botón de favoritos
                     BlocBuilder<FavoritesBloc, FavoritesState>(
                       buildWhen: (previous, current) {
                         if (previous is FavoritesLoadedState &&
@@ -135,21 +141,18 @@ class PokemonCard extends StatelessWidget {
                         if (state is FavoritesLoadedState) {
                           isFavorite = state.favoriteStatus[urlDetail] ?? false;
                         }
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconButton(
-                              icon: Icon(
-                                isFavorite ? Icons.favorite : Icons.favorite_border,
-                                color: isFavorite ? Colors.red : null,
-                              ),
-                              onPressed: () {
-                                context
-                                    .read<FavoritesBloc>()
-                                    .add(ToggleFavoriteEvent(id: urlDetail));
-                              },
+                        return Center(
+                          child: IconButton(
+                            icon: Icon(
+                              isFavorite ? Icons.favorite : Icons.favorite_border,
+                              color: isFavorite ? Colors.red : null,
                             ),
-                          ],
+                            onPressed: () {
+                              context
+                                  .read<FavoritesBloc>()
+                                  .add(ToggleFavoriteEvent(id: urlDetail));
+                            },
+                          ),
                         );
                       },
                     ),
@@ -157,8 +160,8 @@ class PokemonCard extends StatelessWidget {
                 ),
               ),
             ],
-          );
-        }),
+          ),
+        ),
       ),
     );
   }
