@@ -3,34 +3,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/core/utils/utils.dart';
 import 'package:pokeapp/features/favorites_page/presentation/bloc/favorites_bloc.dart';
-import 'package:pokeapp/features/pokemon_detail/presentation/pokemon_detail_page.dart';
-import 'package:pokeapp/features/search_page/presentation/page/search_page.dart';
 
 class PokemonCard extends StatelessWidget {
   const PokemonCard({
     super.key,
     required this.pokemonName,
     required this.urlDetail,
+    required this.onPressedIcon,
+    required this.onTap,
   });
 
   final String pokemonName;
   final String urlDetail;
+  final VoidCallback onPressedIcon;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     context.read<FavoritesBloc>().add(CheckFavoriteStatusEvent(id: urlDetail));
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => PokemonDetailPage(
-              pokemonName: pokemonName,
-              urlDetail: urlDetail,
-            ),
-          ),
-        );
-      },
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
         decoration: BoxDecoration(
@@ -164,11 +156,7 @@ class PokemonCard extends StatelessWidget {
                                   : Icons.favorite_border,
                               color: isFavorite ? Colors.red : null,
                             ),
-                            onPressed: () {
-                              context
-                                  .read<FavoritesBloc>()
-                                  .add(ToggleFavoriteEvent(id: urlDetail));
-                            },
+                            onPressed: onPressedIcon,
                           ),
                         );
                       },

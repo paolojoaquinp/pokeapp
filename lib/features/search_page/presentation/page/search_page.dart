@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokeapp/core/constants/app_strings.dart';
 import 'package:pokeapp/core/helpers/hive_helper.dart';
 import 'package:pokeapp/core/utils/utils.dart';
 import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
 import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/bloc/home_bloc.dart';
+import 'package:pokeapp/features/pokemon_detail/presentation/pokemon_detail_page.dart';
 import 'package:pokeapp/features/search_page/presentation/bloc/search_bloc.dart';
 
 class SearchPage extends StatelessWidget {
@@ -35,7 +37,7 @@ class _Page extends StatelessWidget {
         if (state is ErrorState) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('Something went wrong, please come back later.'),
+              content: Text(AppStrings.errorSearchText),
               duration: Duration(seconds: 3),
             ),
           );
@@ -52,7 +54,6 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final searchBloc = context.read<SearchBloc>();
-
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -65,8 +66,9 @@ class _Body extends StatelessWidget {
                   width: MediaQuery.sizeOf(context).width * 0.65,
                   child: TextField(
                     decoration: InputDecoration(
-                      hintText: 'What Pokémon are you looking for?',
+                      hintText: AppStrings.hintSearchText,
                       border: InputBorder.none,
+                      hintStyle: TextStyle(color: Colors.black.withOpacity(0.45))
                     ),
                     controller: searchBloc.controller,
                     textInputAction: TextInputAction.search,
@@ -83,7 +85,7 @@ class _Body extends StatelessWidget {
                 builder: (context, state) {
                   if (state is SearchInitialState) {
                     return const Center(
-                      child: Text('Start your search'),
+                      child: Text(AppStrings.searchInit),
                     );
                   }
                   if (state is SearchLoadingState) {
@@ -97,21 +99,27 @@ class _Body extends StatelessWidget {
                       itemCount: pokemons.results!.length,
                       itemBuilder: (context, index) {
                         final pokemon = pokemons.results![index];
-                        final pokemonId =
-                            Utils.extractPenultimateValue(pokemon['url']);
-                        final spriteUrl =
-                            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$pokemonId.png';
-
+                        final pokemonId = Utils.extractPenultimateValue(pokemon['url']);
+                        final spriteUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$pokemonId.png';
                         return ListTile(
                           leading: CachedNetworkImage(
                             imageUrl: spriteUrl,
                             width: 40,
                             height: 40,
-                            errorWidget:(_,___,__) => const Icon(Icons.error),
+                            errorWidget: (_, ___, __) =>
+                                const Icon(Icons.error),
                           ),
                           title: Text(pokemon['name']!),
                           onTap: () {
-                            // Acciones al seleccionar el Pokémon
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => PokemonDetailPage(
+                                  pokemonName: pokemon['name'],
+                                  urlDetail: pokemon['url'],
+                                ),
+                              ),
+                            );
                           },
                         );
                       },

@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/core/constants/app_strings.dart';
 import 'package:pokeapp/features/favorites_page/presentation/page/favorites_page.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/page/home_page.dart';
-import 'package:pokeapp/features/search_page/presentation/page/search_page.dart';
 import 'package:pokeapp/features/shared/app_shell/bloc/app_shell_bloc.dart';
 
 class AppShell extends StatelessWidget {

@@ -1,11 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokeapp/core/helpers/hive_helper.dart';
+import 'package:pokeapp/core/constants/app_strings.dart';
 import 'package:pokeapp/features/favorites_page/presentation/bloc/favorites_bloc.dart';
 import 'package:pokeapp/features/favorites_page/presentation/page/widgets/clear_all_button.dart';
-import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
-import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
-import 'package:pokeapp/features/shared/widgets/pokemon_card/pokemon_card.dart';
+import 'package:pokeapp/features/pokemon_detail/presentation/pokemon_detail_page.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({super.key});
@@ -23,9 +22,13 @@ class _Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Mis Favoritos"),
+        backgroundColor: Colors.red,
+        title: const Text(
+          AppStrings.favorites,
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
       ),
-      body: _Body(),
+      body: const _Body(),
     );
   }
 }
@@ -39,13 +42,13 @@ class _Body extends StatelessWidget {
       builder: (context, state) {
         if (state is FavoritesLoadingState) {
           return const Center(
-          child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(),
           );
         }
         if (state is FavoritesLoadedState) {
           return Column(
             children: [
-               ClearFavoritesButton(
+              ClearFavoritesButton(
                 onPressed: () {
                   context.read<FavoritesBloc>().clearAllFavorites();
                   Navigator.of(context).pop();
@@ -56,13 +59,26 @@ class _Body extends StatelessWidget {
                     itemCount: state.pokemons.length,
                     itemBuilder: (_, index) {
                       final pokemon = state.pokemons[index];
-                      return SizedBox(
-                        height: MediaQuery.sizeOf(context).height * 0.75,
-                        child: PokemonCard(
-                          pokemonName: pokemon.name!,
-                          urlDetail:
-                              'https://pokeapi.co/api/v2/pokemon/${pokemon.name!}',
+                      final spriteUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id!}.png';
+                      return ListTile(
+                        leading: CachedNetworkImage(
+                          imageUrl: spriteUrl,
+                          width: 40,
+                          height: 40,
+                          errorWidget: (_, ___, __) => const Icon(Icons.error),
                         ),
+                        title: Text(pokemon.name!),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => PokemonDetailPage(
+                                pokemonName: pokemon.name!,
+                                urlDetail: 'https://pokeapi.co/api/v2/pokemon/${pokemon.id.toString()}',
+                              ),
+                            ),
+                          );
+                        },
                       );
                     }),
               ),

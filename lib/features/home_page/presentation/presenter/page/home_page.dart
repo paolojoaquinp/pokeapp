@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/core/helpers/hive_helper.dart';
+import 'package:pokeapp/features/favorites_page/presentation/bloc/favorites_bloc.dart';
 import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
 import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/bloc/home_bloc.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/page/widgets/search_bar.dart';
+import 'package:pokeapp/features/pokemon_detail/presentation/pokemon_detail_page.dart';
 import 'package:pokeapp/features/shared/widgets/pokemon_card/pokemon_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -49,7 +51,7 @@ class _Page extends StatelessWidget {
             'assets/images/pokeapp-icon.png',
             height: kToolbarHeight,
             fit: BoxFit.cover,
-        ),
+          ),
         ),
         body: const _Body(),
       ),
@@ -73,7 +75,7 @@ class _Body extends StatelessWidget {
               left: widthScreen * 0.09,
               right: widthScreen * 0.09,
             ),
-            child: SearchBarWidget(),
+            child: const SearchBarWidget(),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.65,
@@ -92,9 +94,20 @@ class _Body extends StatelessWidget {
                     itemCount: state.pokemonsResponse.results?.length ?? 0,
                     itemBuilder: (context, index) {
                       final pokemon = state.pokemonsResponse.results![index];
+                      final favoritesBloc = context.read<FavoritesBloc>();
                       return PokemonCard(
                         pokemonName: pokemon['name'],
                         urlDetail: pokemon['url'],
+                        onPressedIcon: () => favoritesBloc.add(ToggleFavoriteEvent(id: pokemon['url'])),
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => PokemonDetailPage(
+                              pokemonName: pokemon['name'],
+                              urlDetail: pokemon['url'],
+                            ),
+                          ),
+                        ),
                       );
                     },
                   );
