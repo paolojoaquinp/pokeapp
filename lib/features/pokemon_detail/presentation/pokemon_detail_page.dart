@@ -86,17 +86,21 @@ class _Body extends StatelessWidget {
                   child: Hero(
                     tag: urlDetail,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal:  36.0),
+                      padding: const EdgeInsets.symmetric(horizontal:  26.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
-                        child: CachedNetworkImage(
-                          imageUrl:
-                              'https://img.pokemondb.net/artwork/$pokemonName.jpg',
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) =>
-                              const CircularProgressIndicator(),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
+                        child: Container(
+                          color: Colors.white,
+                          child: CachedNetworkImage(
+                            imageUrl:
+                                'https://img.pokemondb.net/artwork/$pokemonName.jpg',
+                            height: 250,
+                            fit: BoxFit.fitHeight,
+                            placeholder: (context, url) =>
+                                const CircularProgressIndicator(),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                          ),
                         ),
                       ),
                     ),

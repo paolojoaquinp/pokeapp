@@ -5,6 +5,7 @@ import 'package:pokeapp/core/utils/utils.dart';
 import 'package:pokeapp/features/favorites_page/presentation/bloc/favorites_bloc.dart';
 import 'package:pokeapp/features/pokemon_detail/presentation/pokemon_detail_page.dart';
 import 'package:pokeapp/features/search_page/presentation/page/search_page.dart';
+
 class PokemonCard extends StatelessWidget {
   const PokemonCard({
     super.key,
@@ -65,25 +66,35 @@ class PokemonCard extends StatelessWidget {
                   ],
                 ),
               ),
-
-              // Imagen del Pokémon
               Container(
-                height: 150.0, // Tamaño fijo o relativo (ajustable según el diseño)
+                height: 150.0,
+                width: double.maxFinite,
                 margin: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(8.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black
+                          .withOpacity(0.3), // Color de la sombra con opacidad
+                      blurRadius: 10, // Difusión de la sombra
+                      offset: Offset(4, 4), // Posición de la sombra (x, y)
+                    ),
+                  ],
                 ),
                 child: Hero(
                   tag: urlDetail,
                   child: ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(50)),
                     child: CachedNetworkImage(
-                      imageUrl: 'https://img.pokemondb.net/artwork/$pokemonName.jpg',
+                      imageUrl:
+                          'https://img.pokemondb.net/artwork/$pokemonName.jpg',
                       fit: BoxFit.fitHeight,
                       placeholder: (context, url) => const Center(
                         child: CircularProgressIndicator(),
                       ),
-                      errorWidget: (context, url, error) => const Icon(Icons.error),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                     ),
                   ),
                 ),
@@ -148,7 +159,9 @@ class PokemonCard extends StatelessWidget {
                         return Center(
                           child: IconButton(
                             icon: Icon(
-                              isFavorite ? Icons.favorite : Icons.favorite_border,
+                              isFavorite
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
                               color: isFavorite ? Colors.red : null,
                             ),
                             onPressed: () {
