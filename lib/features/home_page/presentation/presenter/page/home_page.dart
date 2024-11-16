@@ -6,6 +6,7 @@ import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_reposi
 import 'package:pokeapp/features/home_page/presentation/presenter/bloc/home_bloc.dart';
 import 'package:pokeapp/features/shared/widgets/pokemon_card/pokemon_card.dart';
 
+// HomePage Widget
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -40,9 +41,19 @@ class _Page extends StatelessWidget {
         }
       },
       child: Scaffold(
-        appBar: AppBar(title: const Text('Pokeapp'),),
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () => Navigator.pop(context),
+          ),
+          backgroundColor: Colors.red,
+          title: const Text(
+            'Pokeapp',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
         body: const _Body(),
-      )
+      ),
     );
   }
 }
@@ -60,19 +71,25 @@ class _Body extends StatelessWidget {
           );
         }
         if (state is HomeDataLoadedState) {
-          return ListView.builder(
-            padding: const EdgeInsets.only(top: 8.0),
+          return PageView.builder(
+            controller: PageController(
+              viewportFraction: 0.85,
+            ),
             itemCount: state.pokemonsResponse.results?.length ?? 0,
             itemBuilder: (context, index) {
               final pokemon = state.pokemonsResponse.results![index];
-              return PokemonCard(pokemonName: pokemon['name'], urlDetail: pokemon['url'],);
+              return Center( // Centrar la tarjeta
+                child: PokemonCard(
+                  pokemonName: pokemon['name'],
+                  urlDetail: pokemon['url'],
+                ),
+              );
             },
           );
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
         }
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
       },
     );
   }
