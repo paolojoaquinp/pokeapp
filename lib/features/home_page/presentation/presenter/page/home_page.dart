@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokeapp/core/helpers/hive_helper.dart';
 import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
 import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
 import 'package:pokeapp/features/home_page/presentation/presenter/bloc/home_bloc.dart';
-import 'package:pokeapp/features/shared/widgets/pokemon_card/pokemon_card.dart';
+import 'package:pokeapp/features/home_page/presentation/presenter/page/widgets/pokemon_card/pokemon_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,7 +13,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<HomeBloc>(
       create: (context) =>
-          HomeBloc(repository: PokemonRepositoryImpl(PokemonsApi()))
+          HomeBloc(repository: PokemonRepositoryImpl(
+            api: PokemonsApi(),
+            hiveHelper: HiveHelper(),
+          ))
             ..add(const InitialEvent()),
       child: const _Page(),
     );

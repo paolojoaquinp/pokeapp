@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/features/pokemon_detail/presentation/pokemon_detail_page.dart';
-import 'package:pokeapp/features/shared/widgets/pokemon_card/bloc/pokemon_card_bloc.dart';
-import 'package:pokeapp/features/shared/widgets/pokemon_card/bloc/pokemon_card_state.dart';
+import 'package:pokeapp/features/home_page/presentation/presenter/page/widgets/pokemon_card/bloc/pokemon_card_bloc.dart';
+import 'package:pokeapp/features/home_page/presentation/presenter/page/widgets/pokemon_card/bloc/pokemon_card_state.dart';
 
 class PokemonCard extends StatelessWidget {
   const PokemonCard(

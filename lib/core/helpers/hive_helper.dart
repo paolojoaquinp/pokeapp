@@ -15,9 +15,10 @@ class HiveHelper {
     final appDocumentDir =
         await path_provider.getApplicationDocumentsDirectory();
     Hive.init(appDocumentDir.path);
-    box = await Hive.openBox('favorites');
+    box = await Hive.openBox('appData');
   }
 
+  // Métodos para favoritos (sin cambios)
   Future<void> addFavorite(String pokemonId) async {
     List<String> favorites = getAllFavoriteIds();
     if (!favorites.contains(pokemonId)) {
@@ -33,8 +34,7 @@ class HiveHelper {
   }
 
   List<String> getAllFavoriteIds() {
-    final rta = box.get('favoriteIds', defaultValue: <String>[])!.cast<String>();
-    return rta;
+    return box.get('favoriteIds', defaultValue: <String>[])!.cast<String>();
   }
 
   Future<bool> isFavorite(String id) async {
@@ -47,6 +47,31 @@ class HiveHelper {
       await box.put('favoriteIds', <String>[]);
     } catch (e) {
       throw Exception('Error clearing favorites: $e');
+    }
+  }
+
+  Future<void> cachePokemons(Map<String, dynamic> pokemons) async {
+    try {
+      await box.put('pokemons', pokemons);
+    } catch (e) {
+      throw Exception('Error caching Pokémon: $e');
+    }
+  }
+
+  Map<String, dynamic> getCachedPokemons() {
+    final cachedData = box.get('pokemons', defaultValue: []);
+    return Map<String, dynamic>.from(cachedData);
+  }
+
+  bool isCacheAvailable() {
+    return box.containsKey('pokemons');
+  }
+
+  Future<void> clearCache() async {
+    try {
+      await box.delete('pokemons');
+    } catch (e) {
+      throw Exception('Error clearing Pokémon cache: $e');
     }
   }
 }

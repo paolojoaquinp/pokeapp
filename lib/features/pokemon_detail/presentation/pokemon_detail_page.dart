@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokeapp/core/helpers/hive_helper.dart';
 import 'package:pokeapp/features/home_page/data/datasources/api/pokemons_api.dart';
 import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_repository_impl.dart';
 import 'package:pokeapp/features/pokemon_detail/presentation/bloc/pokemon_details_bloc.dart';
@@ -19,7 +20,8 @@ class PokemonDetailPage extends StatelessWidget {
     return BlocProvider<PokemonDetailsBloc>(
       create: (context) => PokemonDetailsBloc(
         repository: PokemonRepositoryImpl(
-          PokemonsApi(),
+          api: PokemonsApi(),
+          hiveHelper: HiveHelper(),
         ),
       )..add(PokemonDetailsInitialEvent(urlDetailPokemon: urlDetail)),
       child: _Page(

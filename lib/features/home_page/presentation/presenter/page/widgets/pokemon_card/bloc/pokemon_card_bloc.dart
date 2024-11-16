@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/core/helpers/hive_helper.dart';
-import 'package:pokeapp/features/shared/widgets/pokemon_card/bloc/pokemon_card_state.dart';
+import 'package:pokeapp/features/home_page/presentation/presenter/page/widgets/pokemon_card/bloc/pokemon_card_state.dart';
 
 class PokemonCardBloc extends Cubit<PokemonCardState> {
   PokemonCardBloc(this.id) : super(PokemonCardState(id: id, isFavorite: false)) {
