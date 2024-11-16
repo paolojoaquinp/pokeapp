@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/features/pokemon_detail/presentation/pokemon_detail_page.dart';
@@ -65,11 +66,11 @@ class _Body extends StatelessWidget {
             children: [
               Hero(
                 tag: urlDetail,
-                child: Image.network(
-                  'https://img.pokemondb.net/artwork/$pokemonName.jpg',
+                child: CachedNetworkImage(
+                  imageUrl: 'https://img.pokemondb.net/artwork/$pokemonName.jpg',
+                  placeholder: (context, url) => const CircularProgressIndicator(), // Loader mientras descarga
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                   fit: BoxFit.cover,
-                  width: double.infinity,
-                  height: 200,
                 ),
               ),
               Padding(

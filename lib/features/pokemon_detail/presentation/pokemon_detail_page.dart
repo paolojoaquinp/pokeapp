@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/core/helpers/hive_helper.dart';
@@ -68,10 +69,12 @@ class _Body extends StatelessWidget {
         children: [
           Hero(
             tag: urlDetail,
-            child: Image.network(
-              'https://img.pokemondb.net/artwork/$pokemonName.jpg',
+            child: CachedNetworkImage(
+              imageUrl: 'https://img.pokemondb.net/artwork/$pokemonName.jpg',
+              placeholder: (context, url) =>
+                  const CircularProgressIndicator(), // Loader mientras descarga
+              errorWidget: (context, url, error) => const Icon(Icons.error),
               fit: BoxFit.cover,
-              width: double.infinity,
             ),
           ),
           const SizedBox(height: 16),
@@ -117,8 +120,7 @@ class _Body extends StatelessWidget {
                       ...state.pokemon.types!
                           .map((type) => Text(type.type!.name!)),
                       const SizedBox(height: 8),
-                      Text(
-                          "Experiencia Base: ${state.pokemon.baseExperience}"),
+                      Text("Experiencia Base: ${state.pokemon.baseExperience}"),
                       const SizedBox(height: 8),
                       if (state.pokemon.sprites!.frontDefault != null)
                         Image.network(state.pokemon.sprites!.frontDefault!),

@@ -74,4 +74,14 @@ class HiveHelper {
       throw Exception('Error clearing Pokémon cache: $e');
     }
   }
+
+   // Guardar ruta de una imagen descargada
+  Future<void> cacheImagePath(String imageUrl, String localPath) async {
+    await box.put('image_$imageUrl', localPath);
+  }
+
+  // Obtiene la ruta local de una imagen
+  String? getCachedImagePath(String imageUrl) {
+    return box.get('image_$imageUrl') as String?;
+  }
 }
