@@ -8,7 +8,6 @@ import 'package:pokeapp/features/home_page/data/repositories_impl/pokemon_reposi
 import 'package:pokeapp/features/home_page/presentation/presenter/bloc/home_bloc.dart';
 import 'package:pokeapp/features/search_page/presentation/bloc/search_bloc.dart';
 
-// La clase principal de tu página de búsqueda
 class SearchPage extends StatelessWidget {
   const SearchPage({
     super.key,
@@ -58,23 +57,27 @@ class _Body extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // Barra de búsqueda
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: TextField(
-                controller: searchBloc.controller,
-                decoration: const InputDecoration(
-                  hintText: 'What Pokémon are you looking for?',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.search),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                BackButton(),
+                SizedBox(
+                  width: MediaQuery.sizeOf(context).width * 0.65,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'What Pokémon are you looking for?',
+                      border: InputBorder.none,
+                    ),
+                    controller: searchBloc.controller,
+                    textInputAction: TextInputAction.search,
+                    onSubmitted: (value) {
+                      searchBloc.add(SearchPokemonEvent(pokemonRequestName: value));
+                    },
+                  ),
                 ),
-                textInputAction: TextInputAction.search,
-                onSubmitted: (value) {
-                  searchBloc.add(SearchPokemonEvent(pokemonRequestName: value));
-                },
-              ),
+                CloseButton(),
+              ],
             ),
-            // Contenido basado en el estado
             Expanded(
               child: BlocBuilder<SearchBloc, SearchState>(
                 builder: (context, state) {
