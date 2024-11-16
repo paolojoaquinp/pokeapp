@@ -1,22 +1,27 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokeapp/features/favorites_page/presentation/bloc/favorites_bloc.dart';
 import 'package:pokeapp/features/pokemon_detail/presentation/pokemon_detail_page.dart';
-import 'package:pokeapp/features/shared/widgets/pokemon_card/bloc/pokemon_card_bloc.dart';
-import 'package:pokeapp/features/shared/widgets/pokemon_card/bloc/pokemon_card_state.dart';
 
 class PokemonCard extends StatelessWidget {
-  const PokemonCard(
-      {super.key, required this.pokemonName, required this.urlDetail});
+  const PokemonCard({
+    super.key,
+    required this.pokemonName,
+    required this.urlDetail,
+  });
 
   final String pokemonName;
   final String urlDetail;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<PokemonCardBloc>(
-      create: (context) => PokemonCardBloc(urlDetail),
-      child: _Body(pokemonName: pokemonName, urlDetail: urlDetail),
+    // Verificar el estado del favorito al construir el widget
+    context.read<FavoritesBloc>().add(CheckFavoriteStatusEvent(id: urlDetail));
+
+    return _Body(
+      pokemonName: pokemonName,
+      urlDetail: urlDetail,
     );
   }
 }
@@ -50,10 +55,10 @@ class _Body extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2), // Color de la sombra
-              spreadRadius: 2, // Expansión de la sombra
-              blurRadius: 8, // Difuminado de la sombra
-              offset: const Offset(0, 4), // Desplazamiento en x y en y
+              color: Colors.black.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 8,
+              offset: const Offset(0, 4),
             ),
           ],
         ),
@@ -67,8 +72,10 @@ class _Body extends StatelessWidget {
               Hero(
                 tag: urlDetail,
                 child: CachedNetworkImage(
-                  imageUrl: 'https://img.pokemondb.net/artwork/$pokemonName.jpg',
-                  placeholder: (context, url) => const CircularProgressIndicator(), // Loader mientras descarga
+                  imageUrl:
+                      'https://img.pokemondb.net/artwork/$pokemonName.jpg',
+                  placeholder: (context, url) =>
+                      const CircularProgressIndicator(),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                   fit: BoxFit.cover,
                 ),
@@ -93,19 +100,35 @@ class _Body extends StatelessWidget {
                           'Saber mas',
                           style: TextStyle(color: Colors.blueAccent),
                         ),
-                        BlocBuilder<PokemonCardBloc, PokemonCardState>(
+                        BlocBuilder<FavoritesBloc, FavoritesState>(
+                          buildWhen: (previous, current) {
+                            // Primero verificamos si ambos estados son FavoritesLoadedState
+                            if (previous is FavoritesLoadedState &&
+                                current is FavoritesLoadedState) {
+                              return previous.favoriteStatus[urlDetail] !=
+                                  current.favoriteStatus[urlDetail];
+                            }
+                            // Si alguno de los estados no es LoadedState, debemos reconstruir
+                            return true;
+                          },
                           builder: (context, state) {
+                            bool isFavorite = false;
+                            if (state is FavoritesLoadedState) {
+                              isFavorite =
+                                  state.favoriteStatus[urlDetail] ?? false;
+                            }
+
                             return IconButton(
                               icon: Icon(
-                                state.isFavorite
+                                isFavorite
                                     ? Icons.favorite
                                     : Icons.favorite_border,
-                                color: state.isFavorite ? Colors.red : null,
+                                color: isFavorite ? Colors.red : null,
                               ),
                               onPressed: () {
                                 context
-                                    .read<PokemonCardBloc>()
-                                    .toggleFavorite();
+                                    .read<FavoritesBloc>()
+                                    .add(ToggleFavoriteEvent(id: urlDetail));
                               },
                             );
                           },

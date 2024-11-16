@@ -12,14 +12,7 @@ class FavoritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<FavoritesBloc>(
-      create: (context) =>
-          FavoritesBloc(pokemonRepository: PokemonRepositoryImpl(
-            api: PokemonsApi(),
-            hiveHelper: HiveHelper(),
-          ))..add(const FavoritesInitialEvent()),
-      child: const _Page(),
-    );
+    return const _Page();
   }
 }
 
