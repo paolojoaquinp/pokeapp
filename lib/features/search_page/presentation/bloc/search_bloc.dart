@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:pokeapp/features/home_page/domain/entities/pokemon/pokemon.dart';
+import 'package:pokeapp/features/home_page/domain/entities/pokemon_response/pokemon_response.dart';
 import 'package:pokeapp/features/home_page/domain/repositories/pokemon_repository.dart';
 
 part 'search_event.dart';
@@ -22,6 +23,18 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
   Future<void> _onSearchInitialEvent(SearchInitialEvent event, Emitter<SearchState> emit) async {
     controller.clear(); 
+    emit(const SearchLoadingState());
+    final result = await pokemonRepository.getPokemons();
+    result.when(
+      ok: (data) {
+        if (data.results!.isNotEmpty) {
+          emit(SearchSuggestionLoadedState(pokemons: data));
+        }
+      },
+      err: (err) {
+        emit(SearchErrorState(error: err.toString()));
+      },
+    );
   }
 
 

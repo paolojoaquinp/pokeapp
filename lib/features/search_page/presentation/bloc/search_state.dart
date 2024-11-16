@@ -21,6 +21,15 @@ class SearchLoadingState extends SearchState {
   List<Object> get props => [];
 }
 
+class SearchSuggestionLoadedState extends SearchState {
+  const SearchSuggestionLoadedState({required this.pokemons});
+
+  final PokemonResponse pokemons;
+
+  @override
+  List<Object> get props => [pokemons];
+}
+
 class SearchLoadedState extends SearchState {
   const SearchLoadedState({required this.pokemon});
 
