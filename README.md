@@ -6,6 +6,8 @@ The app Has been connected with the Api of Pokeapi, you can reach more about it 
 
 ## The Architecture
 
+This app can operate in OFFLINE MODE.
+
 The app has a lot of features. You can find some of them in this repo, this app includes:
 
 - *home_page*: Your favorites pokemons in cards were you can get relevant information about all of them
