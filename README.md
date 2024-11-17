@@ -8,6 +8,15 @@ The app Has been connected with the Api of Pokeapi, you can reach more about it 
 
 This app can operate in OFFLINE MODE.
 
+Pokedex App follows a *clean architecture* approach with a feature-first mindset. This allows for better separation of concerns, testability, and maintainability.
+
+## Metodology
+
+- Scrum: The project was developed using the Scrum framework, with regular sprints, daily stand-ups, and retrospectives.
+- Git Flow: For managing code changes using feature branches, release branches, and master branch.
+
+## Features
+
 The app has a lot of features. You can find some of them in this repo, this app includes:
 
 - *home_page*: Your favorites pokemons in cards were you can get relevant information about all of them
@@ -45,12 +54,22 @@ This project is a starting point for a Flutter application.
 3. Compile in your favorite simulator
 
 
-### This app contains the next relevant packages
+### _Technology Stack_
 
-- freezed
-- flutter_bloc
-- hive
-- Dio
+#### State Management:
+- BLoC: Business Logic Component pattern for managing the application state.
+- Equatable: For efficient equality checks.
+#### Data Persistence:
+- Hive: For storing local data.
+#### Networking:
+- Dio: For making HTTP requests to fetch Pokémon data.
+#### Image Caching:
+- cached_network_image: For efficient image loading and caching.
+#### Animations:
+- lottie: For rendering After Effects animations.
+#### Testing:
+- mocktail: For mocking dependencies in tests.
+- bloc_test: For testing BLoC components.
 
 
 #### Build with Flutter & Dart @paolojoaquinp
