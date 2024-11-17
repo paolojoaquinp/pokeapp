@@ -25,7 +25,6 @@ class PokemonDetailPage extends StatelessWidget {
       create: (context) => PokemonDetailsBloc(
         repository: PokemonRepositoryImpl(
           api: PokemonsApi(),
-          hiveHelper: HiveHelper(),
         ),
       )..add(PokemonDetailsInitialEvent(pokemonName: pokemonName)),
       child: _Page(

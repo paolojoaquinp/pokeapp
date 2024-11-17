@@ -21,7 +21,6 @@ class SearchPage extends StatelessWidget {
       create: (context) => SearchBloc(
         pokemonRepository: PokemonRepositoryImpl(
           api: PokemonsApi(),
-          hiveHelper: HiveHelper(),
         ),
       )..add(const SearchInitialEvent()),
       child: _Page(),

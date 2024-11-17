@@ -10,7 +10,7 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc({required this.repository}) : hiveHelper = HiveHelper(), super(HomeInitial()) {
+  HomeBloc({required this.repository, required this.hiveHelper}) : super(HomeInitial()) {
     on<HomeEvent>((event, emit) {
       // TODO: implement event handler
     });

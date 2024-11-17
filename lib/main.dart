@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
       create: (context) => FavoritesBloc(
           pokemonRepository: PokemonRepositoryImpl(
         api: PokemonsApi(),
-        hiveHelper: HiveHelper(),
       ))
         ..add(const FavoritesInitialEvent()),
       child: MaterialApp(

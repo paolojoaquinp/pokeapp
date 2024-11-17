@@ -7,16 +7,15 @@ import 'package:pokeapp/features/home_page/domain/repositories/pokemon_repositor
 
 class PokemonRepositoryImpl implements PokemonRepository {
   final PokemonsApi api;
-  final HiveHelper hiveHelper;
 
   PokemonRepositoryImpl({
     required this.api,
-    required this.hiveHelper,
   });
 
   @override
   Future<Result<PokemonResponse, String>> getPokemons() async {
     try {
+      final hiveHelper = HiveHelper();
       if (hiveHelper.isCacheAvailable()) {
         final cachedData = hiveHelper.getCachedPokemons();
         final pokemonResponse = PokemonResponse.fromJson(cachedData);
