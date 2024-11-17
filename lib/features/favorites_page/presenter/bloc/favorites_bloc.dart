@@ -12,7 +12,7 @@ part 'favorites_state.dart';
 class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
   FavoritesBloc({required this.pokemonRepository}) 
       : hivePreferences = HiveHelper(), 
-        super(FavoritesInitial()) {
+        super(const FavoritesInitial()) {
     on<FavoritesInitialEvent>(_onFavoritesInitialEvent);
     on<ToggleFavoriteEvent>(_onToggleFavoriteEvent);
     on<CheckFavoriteStatusEvent>(_onCheckFavoriteStatusEvent);
@@ -112,7 +112,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
   Future<void> clearAllFavorites() async {
     try {
       await hivePreferences.clearAllFavorites();
-      add(FavoritesInitialEvent());
+      add(const FavoritesInitialEvent());
     } catch (e) {
       throw(Exception(e));
     }

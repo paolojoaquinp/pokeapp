@@ -70,14 +70,14 @@ class PokemonCard extends StatelessWidget {
                       color: Colors.black
                           .withOpacity(0.3), // Color de la sombra con opacidad
                       blurRadius: 10, // Difusión de la sombra
-                      offset: Offset(4, 4), // Posición de la sombra (x, y)
+                      offset: const Offset(4, 4), // Posición de la sombra (x, y)
                     ),
                   ],
                 ),
                 child: Hero(
                   tag: urlDetail,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(50)),
+                    borderRadius: const BorderRadius.all(Radius.circular(50)),
                     child: CachedNetworkImage(
                       imageUrl:
                           'https://img.pokemondb.net/artwork/$pokemonName.jpg',

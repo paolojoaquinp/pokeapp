@@ -58,7 +58,7 @@ void main() {
       'emits [HomeLoadingState, ErrorState] when InitialEvent is added and fetching data fails',
       build: () {
         when(() => mockPokemonRepository.getPokemons())
-            .thenAnswer((_) async => Err('Error fetching Pokémon'));
+            .thenAnswer((_) async => const Err('Error fetching Pokémon'));
         return homeBloc;
       },
       act: (bloc) => bloc.add(const InitialEvent()),
@@ -76,7 +76,7 @@ void main() {
       'emits [HomeLoadingState, ErrorState] when RefreshEvent is added and refreshing data fails',
       build: () {
         when(() => mockPokemonRepository.fetchPokemon())
-            .thenAnswer((_) async => Err('Error refreshing Pokémon'));
+            .thenAnswer((_) async => const Err('Error refreshing Pokémon'));
         return homeBloc;
       },
       act: (bloc) => bloc.add(const RefreshEvent()),

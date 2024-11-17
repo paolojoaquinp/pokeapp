@@ -21,7 +21,7 @@ class SplashScreen extends StatelessWidget {
             Navigator.pushReplacement(
               context,
               PageRouteBuilder(
-                transitionDuration: Duration(milliseconds: 800),
+                transitionDuration: const Duration(milliseconds: 800),
                 pageBuilder: (_, __, ___) => const AppShell(),
                 transitionsBuilder: (_, animation, __, child) {
                   return FadeTransition(

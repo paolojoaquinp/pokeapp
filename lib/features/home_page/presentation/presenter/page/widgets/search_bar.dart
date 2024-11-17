@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokeapp/features/search_page/presenter/page/search_page.dart';
 
 class SearchBarWidget extends StatelessWidget {
-  const SearchBarWidget({Key? key}) : super(key: key);
+  const SearchBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class SearchBarWidget extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => SearchPage()),
+          MaterialPageRoute(builder: (context) => const SearchPage()),
         );
       },
       child: Container(
