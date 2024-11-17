@@ -12,7 +12,6 @@ Pokedex App follows a *clean architecture* approach with a feature-first mindset
 
 ## Metodology
 
-- Scrum: The project was developed using the Scrum framework, with regular sprints, daily stand-ups, and retrospectives.
 - Git Flow: For managing code changes using feature branches, release branches, and master branch.
 
 ## Features
